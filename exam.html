@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP Board Exam Prep 2026 | Ultimate Edition</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        chem: { light: '#ccfbf1', DEFAULT: '#0d9488', dark: '#115e59' }, // Teal
+                        phys: { light: '#e0f2fe', DEFAULT: '#0284c7', dark: '#0369a1' }, // Sky Blue
+                        eng: { light: '#fae8ff', DEFAULT: '#c026d3', dark: '#a21caf' },  // Fuchsia
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Formula & Code Styling */
+        .formula-text {
+            font-family: 'Courier New', Courier, monospace;
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        /* Active Recall - Blur Effect */
+        .blur-reveal {
+            filter: blur(6px);
+            user-select: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .blur-reveal:hover {
+            filter: blur(4px);
+        }
+        .revealed {
+            filter: blur(0);
+            cursor: text;
+            user-select: text;
+        }
+
+        /* MCQ Styles */
+        .option-btn {
+            transition: all 0.2s;
+        }
+        .option-btn:hover {
+            background-color: #f8fafc;
+        }
+        .option-btn.selected {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .option-btn.correct {
+            border-color: #22c55e;
+            background-color: #f0fdf4;
+            color: #15803d;
+        }
+        .option-btn.wrong {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans h-screen flex flex-col overflow-hidden">
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-slate-200 z-40 shadow-sm flex-shrink-0">
+        <div class="max-w-7xl mx-auto px-4 w-full">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg flex items-center justify-center text-white shadow-lg">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <div class="hidden md:flex flex-col">
+                        <span class="font-extrabold text-xl tracking-tight text-slate-800">Exam<span class="text-blue-600">Hub</span></span>
+                        <span class="text-[10px] text-slate-500 font-bold tracking-widest uppercase">MP Board 2026</span>
+                    </div>
+                </div>
+
+                <!-- Subject Tabs (Center) -->
+                <div class="flex gap-2 bg-slate-100 p-1 rounded-xl">
+                    <button onclick="switchSubject('physics')" id="tab-physics" class="px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 text-slate-500 hover:text-slate-700">
+                        <i class="fa-solid fa-atom"></i> <span class="hidden sm:inline">Physics</span>
+                    </button>
+                    <button onclick="switchSubject('chemistry')" id="tab-chemistry" class="px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 text-slate-500 hover:text-slate-700">
+                        <i class="fa-solid fa-flask"></i> <span class="hidden sm:inline">Chemistry</span>
+                    </button>
+                    <button onclick="switchSubject('english')" id="tab-english" class="px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 text-slate-500 hover:text-slate-700">
+                        <i class="fa-solid fa-book"></i> <span class="hidden sm:inline">English</span>
+                    </button>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-3">
+                    <button onclick="showStats()" class="hidden md:flex items-center gap-2 px-3 py-1.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition text-xs font-bold text-slate-600">
+                        <i class="fa-solid fa-chart-pie"></i> Stats
+                    </button>
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden absolute inset-0 bg-white z-50 flex flex-col p-6 md:hidden">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold">Menu</h2>
+            <button onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+                <i class="fa-solid fa-xmark text-2xl"></i>
+            </button>
+        </div>
+        <div class="space-y-4">
+            <button onclick="switchSubject('physics'); document.getElementById('mobile-menu').classList.add('hidden')" class="w-full p-4 bg-phys-light text-phys-dark rounded-xl font-bold text-left flex items-center gap-3">
+                <i class="fa-solid fa-atom"></i> Physics
+            </button>
+            <button onclick="switchSubject('chemistry'); document.getElementById('mobile-menu').classList.add('hidden')" class="w-full p-4 bg-chem-light text-chem-dark rounded-xl font-bold text-left flex items-center gap-3">
+                <i class="fa-solid fa-flask"></i> Chemistry
+            </button>
+            <button onclick="switchSubject('english'); document.getElementById('mobile-menu').classList.add('hidden')" class="w-full p-4 bg-eng-light text-eng-dark rounded-xl font-bold text-left flex items-center gap-3">
+                <i class="fa-solid fa-book"></i> English
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="flex flex-1 overflow-hidden max-w-7xl mx-auto w-full">
+        
+        <!-- Sidebar (Topic Navigation) -->
+        <aside class="w-72 bg-white border-r border-slate-200 flex flex-col hidden md:flex transition-all z-20">
+            <!-- Sidebar Header -->
+            <div class="p-5 border-b border-slate-100 bg-slate-50/50">
+                <h2 class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1" id="sidebar-sub">Study Material</h2>
+                <h3 class="text-xl font-black text-slate-800" id="sidebar-title">Physics</h3>
+            </div>
+            
+            <!-- Topic List -->
+            <div class="flex-1 overflow-y-auto p-3 space-y-2" id="topic-list">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Footer Stats -->
+            <div class="p-4 border-t border-slate-100 bg-slate-50/30">
+                <div class="flex justify-between text-xs font-bold text-slate-500 mb-2">
+                    <span>Topic Progress</span>
+                    <span id="topic-progress-text">0%</span>
+                </div>
+                <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                    <div id="topic-progress-bar" class="bg-blue-500 h-full w-0 transition-all duration-500"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 bg-slate-50 relative flex flex-col">
+            
+            <!-- Content Header -->
+            <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 z-10 sticky top-0">
+                <div>
+                    <span id="header-badge" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-100 text-slate-500 tracking-wider">Dashboard</span>
+                    <h1 id="header-title" class="text-2xl font-bold text-slate-800">Overview</h1>
+                </div>
+                
+                <div class="relative w-full sm:w-64 group">
+                    <input type="text" id="search-input" placeholder="Search..." class="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 transition-all group-hover:bg-white">
+                    <i class="fa-solid fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                </div>
+            </header>
+
+            <!-- Scrollable Content -->
+            <div id="content-area" class="flex-1 overflow-y-auto p-4 sm:p-8 scroll-smooth">
+                <!-- Dynamic Content Injected Here -->
+            </div>
+
+        </main>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- DATA WAREHOUSE (Populated from User Files) ---
+        const DB = {
+            physics: {
+                color: 'phys',
+                icon: 'fa-atom',
+                title: 'Physics',
+                topics: [
+                    {
+                        id: 'p_diff', type: 'cards', title: 'Part 1: Differences & Definitions', icon: 'fa-scale-balanced',
+                        items: [
+                            { q: "n-type vs p-type Semiconductor", a: "<strong>n-type:</strong> Doped with Pentavalent impurity (Group 15, e.g., Arsenic). Majority Carriers: Electrons. Minority Carriers: Holes.<br><strong>p-type:</strong> Doped with Trivalent impurity (Group 13, e.g., Indium). Majority Carriers: Holes. Minority Carriers: Electrons." },
+                            { q: "Ammeter vs Voltmeter", a: "<strong>Ammeter:</strong> Measures electric current. Connected in Series. Very low resistance (Ideal = 0).<br><strong>Voltmeter:</strong> Measures potential difference. Connected in Parallel. Very high resistance (Ideal = Infinite)." },
+                            { q: "Step-up vs Step-down Transformer", a: "<strong>Step-up:</strong> Increases voltage (Output > Input). Sec turns > Pri turns. Decreases current.<br><strong>Step-down:</strong> Decreases voltage (Output < Input). Sec turns < Pri turns. Increases current." },
+                            { q: "Self Induction vs Mutual Induction", a: "<strong>Self:</strong> Induced EMF produced in the <em>same</em> coil due to change of current in it. (Example: Choke coil)<br><strong>Mutual:</strong> Induced EMF produced in a <em>neighboring</em> coil due to change of current in the first coil. (Example: Transformer)" },
+                            { q: "Interference vs Diffraction", a: "<strong>Interference:</strong> Superposition of two separate wave trains. Fringes usually equal width. Dark fringes perfectly dark.<br><strong>Diffraction:</strong> Bending of light from same wavefront. Fringes unequal width. Dark fringes not perfectly dark." },
+                            { q: "Lenz's Law", a: "The polarity of induced EMF is such that it tends to produce a current which opposes the change in magnetic flux that produced it. Based on Law of Conservation of Energy." },
+                            { q: "Total Internal Reflection (TIR)", a: "When light travels from Denser to Rarer medium and angle of incidence > Critical Angle, light reflects back into denser medium. Used in Optical Fibers, Mirage." },
+                            { q: "Properties of Electric Field Lines", a: "1. Start from Positive, end at Negative.<br>2. Never intersect each other.<br>3. Always perpendicular to conductor surface." },
+                            { q: "Why does sky appear blue?", a: "Due to Scattering. Air molecules scatter shorter wavelengths (Blue/Violet) more than Red ($I \\propto 1/\\lambda^4$)." },
+                            { q: "Why is transformer core laminated?", a: "To reduce energy loss due to Eddy Currents." }
+                        ]
+                    },
+                    {
+                        id: 'p_deriv', type: 'cards', title: 'Part 2: Formulas & Derivations', icon: 'fa-square-root-variable',
+                        items: [
+                            { q: "Gauss's Theorem", a: "Total flux $\\phi = \\oint E \\cdot dS = q/\\epsilon_0$" },
+                            { q: "Electric Field of Dipole", a: "Axial: $E = \\frac{1}{4\\pi\\epsilon_0}\\frac{2p}{r^3}$<br>Equatorial: $E = \\frac{1}{4\\pi\\epsilon_0}\\frac{p}{r^3}$" },
+                            { q: "Capacitance (Parallel Plate)", a: "$C = \\frac{K\\epsilon_0 A}{d}$" },
+                            { q: "Wheatstone Bridge Principle", a: "Condition for balance: $P/Q = R/S$" },
+                            { q: "Biot-Savart Law (Center of Coil)", a: "$B = \\frac{\\mu_0 I}{2R}$" },
+                            { q: "Ampere's Circuital Law (Solenoid)", a: "$B = \\mu_0 n I$" },
+                            { q: "LCR Circuit Resonance", a: "$\\omega L = 1/\\omega C \\implies f = \\frac{1}{2\\pi\\sqrt{LC}}$" },
+                            { q: "Lens Maker's Formula", a: "$\\frac{1}{f} = (\\mu - 1)(\\frac{1}{R_1} - \\frac{1}{R_2})$" },
+                            { q: "Prism Formula", a: "$\\mu = \\frac{\\sin((A+\\delta_m)/2)}{\\sin(A/2)}$" },
+                            { q: "Einstein's Photoelectric Equation", a: "$K_{max} = h\\nu - \\phi_0$" }
+                        ]
+                    },
+                    {
+                        id: 'p_mcq', type: 'quiz', title: 'Full Physics MCQ Bank', icon: 'fa-list-check',
+                        items: [
+                            { q: "Unit of Electric Field is:", options: ["N/C", "J/C", "V-m", "J/m"], correct: 0 },
+                            { q: "Value of Epsilon Zero is:", options: ["8.85 x 10^-12", "9 x 10^9", "1.6 x 10^-19", "Zero"], correct: 0 },
+                            { q: "Field inside a conductor is:", options: ["Maximum", "Zero", "Infinite", "Variable"], correct: 1 },
+                            { q: "Number of electrons in 1 Coulomb:", options: ["6.25 x 10^18", "1.6 x 10^19", "6.02 x 10^23", "None"], correct: 0 },
+                            { q: "Dielectric constant of metal:", options: ["0", "1", "Infinite", "81"], correct: 2 },
+                            { q: "Kirchhoff's 1st Law is based on:", options: ["Energy", "Charge", "Momentum", "Mass"], correct: 1 },
+                            { q: "Ideally Ammeter Resistance is:", options: ["Zero", "Infinite", "Low", "High"], correct: 0 },
+                            { q: "Ideally Voltmeter Resistance is:", options: ["Zero", "Infinite", "Low", "High"], correct: 1 },
+                            { q: "Unit of Resistivity:", options: ["Ohm", "Ohm-meter", "Mho", "Siemen"], correct: 1 },
+                            { q: "Ohm's law is valid for:", options: ["Semiconductors", "Metals", "Electrolytes", "Gases"], correct: 1 },
+                            { q: "1 Tesla equals how many Gauss?", options: ["10^2", "10^3", "10^4", "10^5"], correct: 2 },
+                            { q: "Lenz's Law is based on:", options: ["Conservation of Charge", "Conservation of Energy", "Momentum", "Mass"], correct: 1 },
+                            { q: "Transformer works on:", options: ["DC only", "AC only", "Both", "None"], correct: 1 },
+                            { q: "Power factor of pure resistor:", options: ["0", "1", "Infinity", "0.5"], correct: 1 },
+                            { q: "Unit of Magnetic Flux:", options: ["Tesla", "Weber", "Gauss", "Henry"], correct: 1 },
+                            { q: "Speed of Light formula:", options: ["1/sqrt(mu0 eps0)", "mu0 eps0", "E/B", "None"], correct: 0 },
+                            { q: "Blue color of sky is due to:", options: ["Reflection", "Refraction", "Scattering", "Dispersion"], correct: 2 },
+                            { q: "Focal length of plane mirror:", options: ["0", "Infinity", "25cm", "-25cm"], correct: 1 },
+                            { q: "Mirage is due to:", options: ["Reflection", "Refraction", "TIR", "Diffraction"], correct: 2 },
+                            { q: "Energy of Photon:", options: ["hv", "mc^2", "h/v", "None"], correct: 0 },
+                            { q: "Universal Gates are:", options: ["AND, OR", "NAND, NOR", "NOT, XOR", "None"], correct: 1 },
+                            { q: "Majority carriers in n-type:", options: ["Holes", "Electrons", "Ions", "Neutrons"], correct: 1 },
+                            { q: "Barrier potential for Si:", options: ["0.3V", "0.7V", "1.1V", "0V"], correct: 1 },
+                            { q: "Impurity for p-type:", options: ["Pentavalent", "Trivalent", "Tetravalent", "Hexavalent"], correct: 1 },
+                            { q: "Mass-Energy Relation:", options: ["E=mc^2", "E=hv", "F=ma", "None"], correct: 0 }
+                        ]
+                    }
+                ]
+            },
+            chemistry: {
+                color: 'chem',
+                icon: 'fa-flask',
+                title: 'Chemistry',
+                topics: [
+                    {
+                        id: 'c_part1', type: 'cards', title: 'Part 1: Definitions & Differences', icon: 'fa-star',
+                        items: [
+                            { q: "Amorphous vs Crystalline Solids", a: "<strong>Crystalline:</strong> Long-range order, sharp melting point, definite geometry.<br><strong>Amorphous:</strong> Short-range order, irregular arrangement, soften over range of temp." },
+                            { q: "Schottky vs Frenkel Defects", a: "<strong>Schottky:</strong> Equal cations/anions missing (Density decreases).<br><strong>Frenkel:</strong> Ion displaced to interstitial site (Density same)." },
+                            { q: "Metallic vs Ionic Solids", a: "<strong>Metallic:</strong> Free electrons, conduct in solid state.<br><strong>Ionic:</strong> Electrostatic forces, conduct only in molten/solution." },
+                            { q: "Henry's Law", a: "Solubility of gas in liquid is directly proportional to partial pressure of gas. $p = K_H \\chi$" },
+                            { q: "Ideal vs Non-Ideal Solutions", a: "<strong>Ideal:</strong> Obeys Raoult's Law, $\\Delta H_{mix}=0$, $\\Delta V_{mix}=0$.<br><strong>Non-Ideal:</strong> Does not obey, $\\Delta H \\neq 0$, $\\Delta V \\neq 0$." },
+                            { q: "Osmotic Pressure", a: "Minimum excess pressure to prevent solvent entry through semi-permeable membrane. $\\pi = CRT$." },
+                            { q: "Order vs Molecularity", a: "<strong>Order:</strong> Sum of powers in rate law (Experimental, can be 0/fraction).<br><strong>Molecularity:</strong> Colliding species (Theoretical, integer only)." },
+                            { q: "Lanthanide Contraction", a: "Steady decrease in atomic radii of Lanthanides due to poor shielding of 4f electrons." },
+                            { q: "Why Transition Metals Colored?", a: "Due to d-d transitions of unpaired electrons absorbing visible light." },
+                            { q: "Ligand & Coordination Number", a: "<strong>Ligand:</strong> Electron pair donor.<br><strong>Coordination No:</strong> Number of donor atoms attached to metal." },
+                            { q: "SN1 vs SN2", a: "<strong>SN1:</strong> 2 steps, Carbocation, Racemization, 3°>1°.<br><strong>SN2:</strong> 1 step, Transition State, Inversion, 1°>3°." },
+                            { q: "DNA vs RNA", a: "<strong>DNA:</strong> Deoxyribose, Double strand, Thymine.<br><strong>RNA:</strong> Ribose, Single strand, Uracil." }
+                        ]
+                    },
+                    {
+                        id: 'c_part2', type: 'cards', title: 'Part 2: Reactions & Laws', icon: 'fa-flask-vial',
+                        items: [
+                            { q: "Density of Unit Cell Formula", a: "$\\rho = \\frac{Z \\times M}{a^3 \\times N_A}$" },
+                            { q: "Nernst Equation", a: "$E_{cell} = E^0 - \\frac{0.059}{n} \\log \\frac{[Prod]}{[React]}$" },
+                            { q: "Kohlrausch's Law", a: "$\\Lambda^0_m = \\lambda^0_+ + \\lambda^0_-$" },
+                            { q: "Arrhenius Equation", a: "$k = A e^{-E_a/RT}$" },
+                            { q: "Reimer-Tiemann Reaction", a: "Phenol + $CHCl_3$ + NaOH $\\rightarrow$ Salicylaldehyde" },
+                            { q: "Wurtz Reaction", a: "$2RX + 2Na \\rightarrow R-R + 2NaX$" },
+                            { q: "Cannizzaro Reaction", a: "Aldehydes with no $\\alpha$-H (HCHO) + Conc Alkali $\\rightarrow$ Alcohol + Acid Salt" },
+                            { q: "Aldol Condensation", a: "Aldehydes with $\\alpha$-H + Dil Alkali $\\rightarrow$ $\\beta$-hydroxy aldehyde" },
+                            { q: "Hoffmann Bromamide", a: "Amide + $Br_2$ + KOH $\\rightarrow$ Primary Amine (1 less C)" },
+                            { q: "Carbylamine Reaction", a: "1° Amine + $CHCl_3$ + KOH $\\rightarrow$ Isocyanide (Foul smell)" },
+                            { q: "Williamson's Synthesis", a: "$RX + R'ONa \\rightarrow R-O-R'$ (Ether). RX must be 1°." },
+                            { q: "Sandmeyer Reaction", a: "Diazonium Salt $\\xrightarrow{Cu_2Cl_2/HCl}$ Chlorobenzene" }
+                        ]
+                    },
+                    {
+                        id: 'c_mcq', type: 'quiz', title: 'Full Chemistry MCQ Bank', icon: 'fa-vial-circle-check',
+                        items: [
+                            { q: "Which defect decreases density?", options: ["Frenkel", "Schottky", "Interstitial", "None"], correct: 1 },
+                            { q: "Unit of Molality is:", options: ["mol/kg", "mol/L", "g/L", "None"], correct: 0 },
+                            { q: "Highest Boiling Point:", options: ["1M Glucose", "1M NaCl", "1M Na2SO4", "1M Urea"], correct: 2 },
+                            { q: "Henry's constant depends on:", options: ["Pressure", "Temperature", "Volume", "None"], correct: 1 },
+                            { q: "SHE Potential is:", options: ["1.0V", "0.0V", "10V", "Infinite"], correct: 1 },
+                            { q: "Corrosion of iron is:", options: ["Oxidation", "Reduction", "Electrochemical process", "None"], correct: 2 },
+                            { q: "Unit of Zero Order Rate Constant:", options: ["mol/L/s", "1/s", "L/mol/s", "None"], correct: 0 },
+                            { q: "Unit of First Order Rate Constant:", options: ["mol/L/s", "1/s", "L/mol/s", "None"], correct: 1 },
+                            { q: "Molecularity cannot be:", options: ["1", "2", "3", "Zero"], correct: 3 },
+                            { q: "Colorless ion is:", options: ["Cu2+", "Fe3+", "Zn2+", "Ni2+"], correct: 2 },
+                            { q: "Lanthanide oxidation state:", options: ["+2", "+3", "+4", "+5"], correct: 1 },
+                            { q: "Shape of [Ni(CN)4]2-:", options: ["Tetrahedral", "Square Planar", "Octahedral", "Linear"], correct: 1 },
+                            { q: "EDTA is a ___ ligand:", options: ["Monodentate", "Bidentate", "Hexadentate", "Tetradentate"], correct: 2 },
+                            { q: "Coinage metals belong to group:", options: ["10", "11", "12", "1"], correct: 1 },
+                            { q: "SN1 reaction is favored by:", options: ["1°", "2°", "3°", "Methyl"], correct: 2 },
+                            { q: "Lucas Reagent is:", options: ["Conc HCl + ZnCl2", "Conc HNO3", "H2SO4", "None"], correct: 0 },
+                            { q: "Rectified Spirit contains:", options: ["100% Ethanol", "95.5% Ethanol", "50% Ethanol", "10% Ethanol"], correct: 1 },
+                            { q: "Phenol + Zn dust gives:", options: ["Benzene", "Toluene", "Benzoic Acid", "None"], correct: 0 },
+                            { q: "Cannizzaro reaction is given by:", options: ["CH3CHO", "HCHO", "CH3COCH3", "None"], correct: 1 },
+                            { q: "Tear gas formula:", options: ["COCl2", "CCl3NO2", "N2O", "None"], correct: 1 },
+                            { q: "Oil of Mirbane is:", options: ["Aniline", "Nitrobenzene", "Benzene", "Phenol"], correct: 1 },
+                            { q: "Vitamin B12 contains:", options: ["Fe", "Mg", "Co", "Zn"], correct: 2 },
+                            { q: "DNA sugar is:", options: ["Ribose", "2-Deoxyribose", "Glucose", "Fructose"], correct: 1 },
+                            { q: "Base NOT in DNA:", options: ["Adenine", "Guanine", "Cytosine", "Uracil"], correct: 3 },
+                            { q: "Protein polymer unit:", options: ["Glucose", "Amino Acid", "Nucleotide", "Fatty Acid"], correct: 1 },
+                            { q: "Natural Rubber monomer:", options: ["Isoprene", "Chloroprene", "Neoprene", "Styrene"], correct: 0 }
+                        ]
+                    }
+                ]
+            },
+            english: {
+                color: 'eng',
+                icon: 'fa-book',
+                title: 'English',
+                topics: [
+                    {
+                        id: 'e_grammar_rules', type: 'cards', title: 'Grammar Mastery Notes', icon: 'fa-pen-nib',
+                        items: [
+                            { q: "Passive Voice Rule", a: "Object + Helping Verb + V3 + by + Subject.<br>If Continuous (-ing), add <strong>being</strong>.<br>If Perfect (has/have), add <strong>been</strong>." },
+                            { q: "If vs Unless", a: "Rule: <strong>Unless = If + Not</strong>.<br>To change 'If...not' to 'Unless', remove 'not'.<br>To change 'If' (positive) to 'Unless', add 'not' to the other clause." },
+                            { q: "Too...to -> So...that", a: "Remove 'too' -> use 'so'.<br>Remove 'to' -> use 'that + Subject + cannot/could not'." },
+                            { q: "No sooner...than", a: "Formula: <strong>No sooner + did + Subject + V1 ... than ...</strong><br>Note: Always use V1 with 'did' (e.g., saw -> see)." },
+                            { q: "Negative with 'Did'", a: "Rule: When main verb is 'did', add 'do' after not.<br>Ex: He did his work -> He did not <strong>do</strong> his work." },
+                            { q: "Relative Clauses (Who)", a: "Use 'Who' for people. Replace pronoun.<br>Ex: The boy is my brother. He is tall -> The boy <strong>who</strong> is tall is my brother." },
+                            { q: "Articles (A, An, The)", a: "<strong>An:</strong> Before Vowel SOUND (Honest, MLA, Hour).<br><strong>A:</strong> Before Consonant SOUND (University, One).<br><strong>The:</strong> Unique things (Sun, Ganga)." },
+                            { q: "Prepositions", a: "<strong>Between:</strong> 2 people.<br><strong>Among:</strong> >2 people.<br><strong>Since:</strong> Point of time (Morning).<br><strong>For:</strong> Duration (2 hours)." }
+                        ]
+                    },
+                    {
+                        id: 'e_char', type: 'cards', title: 'Master Character Sketches', icon: 'fa-user-pen',
+                        items: [
+                            { q: "M. Hamel (The Last Lesson)", a: "<strong>Traits:</strong> Strict, Patriotic, Emotional, Transformative.<br><strong>Details:</strong> Uses iron ruler. Loves French ('clearest language'). Blames himself/parents. Writes 'Vive La France' with dignity." },
+                            { q: "Franz (The Last Lesson)", a: "<strong>Traits:</strong> Procrastinator, Observant, Sensitive.<br><strong>Details:</strong> Postpones learning. Notices changes in school. Regrets not learning French." },
+                            { q: "Saheb (Lost Spring)", a: "<strong>Traits:</strong> Fatalistic, Innocent.<br><strong>Details:</strong> Ragpicker from Dhaka. Name means 'Lord of Universe' (Irony). Looks for 'gold' (coins). Lost freedom at tea stall." },
+                            { q: "Mukesh (Lost Spring)", a: "<strong>Traits:</strong> Ambitious, Resolute, Realistic.<br><strong>Details:</strong> Bangle maker family. Wants to be Motor Mechanic. Dares to dream." },
+                            { q: "Douglas (Deep Water)", a: "<strong>Traits:</strong> Fearful yet Brave, Persevering.<br><strong>Details:</strong> Childhood fear of water (YMCA). Hired instructor. Practiced 5 days/week. Symbol of willpower." },
+                            { q: "The Peddler (The Rattrap)", a: "<strong>Traits:</strong> Cynical, Dishonest, Redeemable.<br><strong>Details:</strong> Views world as Rattrap. Stole 30 kronor. Transformed by Edla's kindness. Signed as Captain." },
+                            { q: "Dr. Sadao (The Enemy)", a: "<strong>Traits:</strong> Skilled, Humanitarian, Pragmatic.<br><strong>Details:</strong> Japanese Surgeon. Saved US soldier (Ethics > Patriotism). Helped him escape to safety." },
+                            { q: "Mr. Lamb (On The Face Of It)", a: "<strong>Traits:</strong> Optimistic, Welcoming, Philosopher.<br><strong>Details:</strong> Tin leg. Sees beauty in weeds/bees. Teaches Derry to love life." },
+                            { q: "Derry (On The Face Of It)", a: "<strong>Traits:</strong> Pessimistic, Withdrawn, Transformed.<br><strong>Details:</strong> Burnt face. Hates sympathy. Changed after meeting Lamb." }
+                        ]
+                    },
+                    {
+                        id: 'e_write', type: 'cards', title: 'Writing Formats & Topics', icon: 'fa-envelope-open-text',
+                        items: [
+                            { q: "Notice Writing", a: "<strong>MUST BE IN A BOX.</strong><br>Format: Org Name -> NOTICE -> Date -> HEADING -> Body -> Sign/Name/Desig.<br>Topics: Lost & Found, Competition, Tour." },
+                            { q: "Formal Letter", a: "Sender Addr -> Date -> Receiver (Designation/Addr) -> Subject -> Salutation -> Body -> Yours faithfully.<br>Topics: Loudspeaker Nuisance, Postmaster Complaint." },
+                            { q: "Essay: Wonders of Science", a: "1. Intro (Age of Science)<br>2. Electricity<br>3. Communication (Mobile)<br>4. Medicine (Surgery)<br>5. Computers (AI)<br>6. Disadvantages (Bombs)<br>7. Conclusion (Good servant, bad master)." },
+                            { q: "Note Making", a: "1. Title (Repeated word)<br>2. Notes with indentation (1. Heading -> 1.1 Sub-heading)<br>3. Key to Abbreviations." }
+                        ]
+                    },
+                    {
+                        id: 'e_qa', type: 'cards', title: 'Imp Textbook Questions', icon: 'fa-question-circle',
+                        items: [
+                            { q: "What did Franz expect to be prepared with?", a: "Rules of **Participles**." },
+                            { q: "What was unusual about school?", a: "Quiet as Sunday morning. Villagers on back benches." },
+                            { q: "Saheb looking for?", a: "Gold (coins) in garbage. Came from Dhaka." },
+                            { q: "Hazards of bangle industry?", a: "Dingy cells, no air/light, loss of eyesight, dust." },
+                            { q: "Douglas's misadventure?", a: "Thrown into deep end of YMCA pool by a bully. Nearly drowned." },
+                            { q: "Peddler's view of world?", a: "A big Rattrap offering riches as bait." },
+                            { q: "Why sign as Captain?", a: "Edla treated him like a Captain; he wanted to behave like one." },
+                            { q: "Mother compared to?", a: "Late winter's moon (Pale, hazy, old)." },
+                            { q: "Theme of Keeping Quiet?", a: "Introspection, Silence, Universal Brotherhood." },
+                            { q: "Things of Beauty?", a: "Sun, Moon, Trees, Daffodils, Streams." },
+                            { q: "Tiger King's death?", a: "Infection from a sliver of a wooden toy tiger." }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // --- APP STATE ---
+        let currentSubject = 'physics';
+        let currentTopic = null;
+        let quizScores = {}; 
+
+        // --- FUNCTIONS ---
+
+        function init() {
+            switchSubject('physics');
+        }
+
+        function switchSubject(subject) {
+            currentSubject = subject;
+            currentTopic = null;
+
+            // Update Tabs
+            document.querySelectorAll('nav button[id^="tab-"]').forEach(btn => {
+                btn.className = "px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 text-slate-500 hover:text-slate-700";
+            });
+            const activeTab = document.getElementById(`tab-${subject}`);
+            activeTab.className = `px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 text-white shadow-md bg-${DB[subject].color}`;
+
+            // Update Sidebar Header
+            document.getElementById('sidebar-title').textContent = DB[subject].title;
+            document.getElementById('sidebar-sub').className = `text-[10px] font-extrabold uppercase tracking-widest mb-1 text-${DB[subject].color}-dark`;
+
+            // Render Sidebar Topics
+            const topicList = document.getElementById('topic-list');
+            topicList.innerHTML = DB[subject].topics.map(t => `
+                <button onclick="loadTopic('${t.id}')" id="btn-${t.id}" class="w-full text-left px-4 py-3.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-3 border border-transparent group">
+                    <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-${DB[subject].color} group-hover:bg-white group-hover:shadow-sm transition-all">
+                        <i class="fa-solid ${t.icon}"></i>
+                    </div>
+                    <span>${t.title}</span>
+                </button>
+            `).join('');
+
+            // Reset to Dashboard
+            loadDashboard();
+        }
+
+        function loadDashboard() {
+            document.getElementById('header-title').textContent = "Dashboard";
+            document.getElementById('header-badge').textContent = DB[currentSubject].title;
+            
+            const content = document.getElementById('content-area');
+            const color = DB[currentSubject].color;
+            
+            content.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+                    <!-- Stats Card -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-${color}-light flex items-center justify-center text-${color}-dark">
+                                <i class="fa-solid fa-layer-group text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Modules</h3>
+                                <p class="text-3xl font-bold text-slate-800">${DB[currentSubject].topics.length}</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500">Access curated notes, differences, character sketches, and quizzes.</p>
+                    </div>
+
+                    <!-- Quick Start -->
+                    <div class="bg-gradient-to-br from-${color} to-${color}-dark p-6 rounded-2xl shadow-md text-white">
+                        <h3 class="font-bold text-lg mb-2">Ready to revise?</h3>
+                        <p class="text-${color}-light text-sm mb-4">Pick a module from the sidebar or start with the first topic.</p>
+                        <button onclick="loadTopic('${DB[currentSubject].topics[0].id}')" class="bg-white text-${color}-dark px-4 py-2 rounded-lg text-sm font-bold hover:bg-opacity-90 transition">
+                            Start ${DB[currentSubject].topics[0].title} <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Topic Grid -->
+                <h3 class="mt-8 mb-4 font-bold text-slate-700">All Modules</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    ${DB[currentSubject].topics.map(t => `
+                        <button onclick="loadTopic('${t.id}')" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-${color} transition-all text-left group">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-slate-50 text-${color} flex items-center justify-center group-hover:bg-${color}-light transition-colors">
+                                    <i class="fa-solid ${t.icon} text-lg"></i>
+                                </div>
+                                <span class="text-[10px] font-bold bg-slate-100 text-slate-500 px-2 py-1 rounded-full uppercase tracking-wide">${t.type === 'quiz' ? 'TEST' : 'NOTES'}</span>
+                            </div>
+                            <span class="font-bold text-slate-700 block group-hover:text-${color}-dark">${t.title}</span>
+                            <span class="text-xs text-slate-400">${t.items.length} items</span>
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function loadTopic(topicId) {
+            currentTopic = DB[currentSubject].topics.find(t => t.id === topicId);
+            
+            // UI Updates
+            document.querySelectorAll('#topic-list button').forEach(b => {
+                b.className = "w-full text-left px-4 py-3.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-3 border border-transparent group";
+            });
+            document.getElementById(`btn-${topicId}`).className = "w-full text-left px-4 py-3.5 rounded-xl text-sm font-semibold text-slate-800 bg-white border border-slate-200 shadow-sm flex items-center gap-3";
+
+            document.getElementById('header-title').textContent = currentTopic.title;
+            document.getElementById('header-badge').textContent = currentTopic.type === 'quiz' ? "Interactive Test" : "Study Cards";
+
+            const content = document.getElementById('content-area');
+
+            if (currentTopic.type === 'quiz') {
+                renderQuiz(content);
+            } else {
+                renderCards(content);
+            }
+        }
+
+        // --- RENDERERS ---
+
+        function renderCards(container) {
+            const color = DB[currentSubject].color;
+            container.innerHTML = `
+                <div class="grid grid-cols-1 gap-6 max-w-4xl mx-auto pb-10 animate-fade-in">
+                    <!-- Instruction -->
+                    <div class="flex justify-between items-center bg-${color}-light/30 p-3 rounded-lg border border-${color}-light text-${color}-dark text-sm mb-2">
+                        <span><i class="fa-regular fa-eye-slash mr-2"></i> <strong>Active Recall:</strong> Answers are hidden. Click to reveal.</span>
+                        <button onclick="revealAll()" class="text-xs font-bold underline">Reveal All</button>
+                    </div>
+
+                    ${currentTopic.items.map((item, idx) => `
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-md transition-shadow">
+                            <div class="p-6 border-b border-slate-50 bg-slate-50/30">
+                                <h3 class="font-bold text-lg text-slate-800 leading-snug">${item.q}</h3>
+                            </div>
+                            <div class="p-6 relative bg-white cursor-pointer" onclick="toggleReveal(this)">
+                                <div class="blur-reveal answer-content text-slate-600 leading-relaxed text-[15px]">
+                                    ${item.a}
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center pointer-events-none text-slate-400 text-xs font-bold uppercase tracking-widest overlay-text">
+                                    Click to Reveal
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderQuiz(container) {
+            const color = DB[currentSubject].color;
+            container.innerHTML = `
+                <div class="max-w-3xl mx-auto pb-10 animate-fade-in">
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-6">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-${color}-light text-${color}-dark rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                                <i class="fa-solid fa-stopwatch"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-slate-800">Practice Quiz</h2>
+                            <p class="text-slate-500 text-sm">Test your knowledge. Scores are not saved permanently.</p>
+                        </div>
+                        
+                        <div class="space-y-8" id="quiz-form">
+                            ${currentTopic.items.map((item, idx) => `
+                                <div class="quiz-item" data-idx="${idx}">
+                                    <p class="font-bold text-slate-800 mb-3"><span class="text-slate-400 mr-2">${idx+1}.</span>${item.q}</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        ${item.options.map((opt, optIdx) => `
+                                            <button onclick="selectOption(${idx}, ${optIdx}, this)" class="option-btn w-full text-left p-3 rounded-lg border border-slate-200 text-sm text-slate-600 relative">
+                                                <span class="font-semibold mr-2 text-slate-400">${String.fromCharCode(65+optIdx)}.</span> ${opt}
+                                            </button>
+                                        `).join('')}
+                                    </div>
+                                    <div class="feedback mt-2 hidden text-sm font-bold"></div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-slate-100 flex justify-between items-center">
+                            <div id="quiz-score" class="text-lg font-bold text-slate-800 hidden">
+                                Score: <span id="score-val" class="text-${color}">0</span>/${currentTopic.items.length}
+                            </div>
+                            <button onclick="submitQuiz()" class="bg-${color} hover:bg-${color}-dark text-white px-8 py-3 rounded-xl font-bold shadow-md transition-all ml-auto">
+                                Submit Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- INTERACTIONS ---
+
+        function toggleReveal(element) {
+            const content = element.querySelector('.answer-content');
+            const overlay = element.querySelector('.overlay-text');
+            
+            if (content.classList.contains('revealed')) {
+                content.classList.remove('revealed');
+                content.classList.add('blur-reveal');
+                overlay.style.display = 'flex';
+            } else {
+                content.classList.add('revealed');
+                content.classList.remove('blur-reveal');
+                overlay.style.display = 'none';
+            }
+        }
+
+        function revealAll() {
+            document.querySelectorAll('.answer-content').forEach(el => {
+                el.classList.add('revealed');
+                el.classList.remove('blur-reveal');
+            });
+            document.querySelectorAll('.overlay-text').forEach(el => el.style.display = 'none');
+        }
+
+        // Quiz Logic
+        let currentAnswers = {};
+
+        function selectOption(qIdx, optIdx, btn) {
+            // Remove selection from siblings
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected', 'ring-2', 'ring-blue-500'));
+            
+            // Select this
+            btn.classList.add('selected', 'ring-2', 'ring-blue-500');
+            currentAnswers[qIdx] = optIdx;
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            const items = currentTopic.items;
+
+            items.forEach((item, idx) => {
+                const userAns = currentAnswers[idx];
+                const qBlock = document.querySelector(`.quiz-item[data-idx="${idx}"]`);
+                const feedback = qBlock.querySelector('.feedback');
+                const options = qBlock.querySelectorAll('.option-btn');
+
+                // Disable buttons
+                options.forEach(b => b.disabled = true);
+
+                if (userAns === undefined) {
+                    feedback.textContent = "Not Attempted";
+                    feedback.className = "feedback mt-2 text-sm font-bold text-orange-500 block";
+                } else if (userAns === item.correct) {
+                    score++;
+                    options[userAns].classList.add('correct');
+                    feedback.textContent = "Correct!";
+                    feedback.className = "feedback mt-2 text-sm font-bold text-green-600 block";
+                } else {
+                    options[userAns].classList.add('wrong');
+                    options[item.correct].classList.add('correct'); // Show correct
+                    feedback.textContent = `Wrong! Correct answer: ${item.options[item.correct]}`;
+                    feedback.className = "feedback mt-2 text-sm font-bold text-red-500 block";
+                }
+            });
+
+            const scoreDiv = document.getElementById('quiz-score');
+            const scoreVal = document.getElementById('score-val');
+            scoreVal.textContent = score;
+            scoreDiv.classList.remove('hidden');
+            scoreDiv.classList.add('animate-bounce');
+        }
+
+        // --- SEARCH ---
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const content = document.getElementById('content-area');
+
+            if (!term) {
+                if(currentTopic) loadTopic(currentTopic.id);
+                else loadDashboard();
+                return;
+            }
+
+            // Global Search across the current Subject
+            let results = [];
+            DB[currentSubject].topics.forEach(t => {
+                t.items.forEach(item => {
+                    if(item.q.toLowerCase().includes(term) || (item.a && item.a.toLowerCase().includes(term))) {
+                        results.push({ ...item, topic: t.title });
+                    }
+                });
+            });
+
+            if (results.length === 0) {
+                content.innerHTML = `<div class="text-center py-20 text-slate-400">No matches found for "${term}"</div>`;
+            } else {
+                content.innerHTML = `
+                    <h2 class="font-bold mb-4 text-slate-700">Search Results (${results.length})</h2>
+                    <div class="grid grid-cols-1 gap-4">
+                        ${results.map(r => `
+                            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                                <span class="text-[10px] uppercase font-bold text-slate-400 mb-2 block">${r.topic}</span>
+                                <h3 class="font-bold text-lg mb-2">${r.q}</h3>
+                                <div class="text-sm text-slate-600">${r.a || 'MCQ Question'}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+        });
+
+        // Initialize
+        window.onload = init;
+
+    </script>
+</body>
+</html>
