@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derivations - MP Board Class 12 Physics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
+                    colors: { primary: '#8b5cf6', surface: '#1e293b', dark: '#0f172a' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(139, 92, 246, 0.2); }
+        .step-box { border-left: 3px solid #8b5cf6; padding-left: 1rem; margin-bottom: 1rem; }
+        
+        /* Print Styles */
+        @media print {
+            body { background-color: white !important; color: black !important; }
+            .glass { background: white !important; border: 1px solid #ccc !important; color: black !important; box-shadow: none !important; }
+            nav, button, .no-print { display: none !important; }
+            * { color: black !important; text-shadow: none !important; }
+            .step-box { border-left: 3px solid black; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 max-w-5xl mx-auto pb-24">
+
+    <nav class="flex justify-between items-center mb-12 no-print">
+        <a href="physics.html" class="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors">
+            <i class="fas fa-arrow-left"></i> Back to Main Kit
+        </a>
+        <div class="text-right">
+            <h1 class="font-display text-2xl md:text-3xl font-bold text-purple-100">Part 2: Full Derivations</h1>
+            <p class="text-xs text-purple-400">Step-by-Step Proofs (Q16 - Q25)</p>
+        </div>
+    </nav>
+
+    <div class="space-y-12">
+
+        <section class="glass p-8 rounded-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-purple-600 text-white font-bold px-3 py-1 rounded">Q16</span>
+                <h2 class="text-2xl font-bold">Gauss's Theorem Proof</h2>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <p><strong>Statement:</strong> The total electric flux through a closed surface is equal to $\frac{1}{\epsilon_0}$ times the net charge enclosed.</p>
+                
+                <div class="bg-black/20 p-6 rounded-xl font-serif">
+                    <p class="italic text-sm text-gray-400 mb-4">Consider a sphere of radius $r$ enclosing a point charge $q$ at its center.</p>
+                    
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 1: Definition of Flux</p>
+                        <p>Small electric flux $d\phi$ through area element $d\vec{S}$ is:</p>
+                        $$ d\phi = \vec{E} \cdot d\vec{S} = E \, dS \cos\theta $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 2: Apply Symmetry</p>
+                        <p>For a sphere, $\vec{E}$ is radial and $d\vec{S}$ is also radial (normal to surface). Thus, angle $\theta = 0^\circ$.</p>
+                        $$ d\phi = E \, dS \cos 0^\circ = E \, dS $$
+                        <p>Total flux $\phi = \oint E \, dS$</p>
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 3: Substitute Electric Field</p>
+                        <p>We know field of a point charge is $E = \frac{1}{4\pi\epsilon_0}\frac{q}{r^2}$. Since $E$ is constant on surface:</p>
+                        $$ \phi = E \oint dS = \left( \frac{1}{4\pi\epsilon_0}\frac{q}{r^2} \right) \times (\text{Total Area}) $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 4: Final Result</p>
+                        <p>Surface area of sphere $\oint dS = 4\pi r^2$.</p>
+                        $$ \phi = \frac{1}{4\pi\epsilon_0}\frac{q}{r^2} \times 4\pi r^2 $$
+                        $$ \phi = \frac{q}{\epsilon_0} $$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-purple-600 text-white font-bold px-3 py-1 rounded">Q17</span>
+                <h2 class="text-2xl font-bold">Electric Field of Dipole (Axial Position)</h2>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <div class="bg-black/20 p-6 rounded-xl font-serif">
+                    <p class="italic text-sm text-gray-400 mb-4">Consider a dipole with charges $-q$ (at A) and $+q$ (at B) separated by $2a$. Point P is at distance $r$ from the center O on the axis.</p>
+                    
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 1: Individual Fields</p>
+                        <p>Field due to $+q$ (at distance $r-a$): $E_B = \frac{kq}{(r-a)^2}$ (Away)</p>
+                        <p>Field due to $-q$ (at distance $r+a$): $E_A = \frac{kq}{(r+a)^2}$ (Towards)</p>
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 2: Net Field</p>
+                        <p>Since $E_B > E_A$, Net field $E = E_B - E_A$.</p>
+                        $$ E = kq \left[ \frac{1}{(r-a)^2} - \frac{1}{(r+a)^2} \right] $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 3: Simplify</p>
+                        $$ E = kq \left[ \frac{(r+a)^2 - (r-a)^2}{(r^2-a^2)^2} \right] $$
+                        <p>Using $(A+B)^2 - (A-B)^2 = 4AB$:</p>
+                        $$ E = kq \left[ \frac{4ar}{(r^2-a^2)^2} \right] = \frac{k (q \cdot 2a) \cdot 2r}{(r^2-a^2)^2} $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 4: Final Approximation</p>
+                        <p>Dipole moment $p = q \cdot 2a$. For short dipole ($r \gg a$), neglect $a^2$.</p>
+                        $$ E = \frac{k \cdot p \cdot 2r}{r^4} = \frac{2kp}{r^3} $$
+                        $$ E = \frac{1}{4\pi\epsilon_0} \frac{2p}{r^3} $$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-purple-600 text-white font-bold px-3 py-1 rounded">Q18</span>
+                <h2 class="text-2xl font-bold">Capacitance of Parallel Plate Capacitor</h2>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <div class="bg-black/20 p-6 rounded-xl font-serif">
+                    <p class="italic text-sm text-gray-400 mb-4">Two parallel plates of area $A$ separated by distance $d$. Charge density is $\sigma = Q/A$.</p>
+                    
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 1: Electric Field</p>
+                        <p>Electric field between two plates is uniform:</p>
+                        $$ E = \frac{\sigma}{\epsilon_0} = \frac{Q}{A\epsilon_0} $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 2: Potential Difference</p>
+                        <p>Relation between $V$ and $E$ is $V = E \cdot d$.</p>
+                        $$ V = \left( \frac{Q}{A\epsilon_0} \right) \cdot d $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 3: Capacitance Formula</p>
+                        <p>By definition $C = Q/V$.</p>
+                        $$ C = \frac{Q}{\left( \frac{Qd}{A\epsilon_0} \right)} $$
+                        $$ C = \frac{\epsilon_0 A}{d} $$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-purple-600 text-white font-bold px-3 py-1 rounded">Q19</span>
+                <h2 class="text-2xl font-bold">Wheatstone Bridge Principle</h2>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <div class="bg-black/20 p-6 rounded-xl font-serif">
+                    <p class="italic text-sm text-gray-400 mb-4">Four resistors P, Q, R, S form a bridge. In balanced condition, Galvanometer current $I_g = 0$.</p>
+                    
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 1: Kirchhoff's Voltage Law (Loop 1)</p>
+                        <p>Apply KVL to loop ABDA (Top triangle):</p>
+                        $$ -I_1 P - I_g G + I_2 R = 0 $$
+                        <p>Since balanced ($I_g = 0$):</p>
+                        $$ I_1 P = I_2 R \quad \text{...(i)} $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 2: Kirchhoff's Voltage Law (Loop 2)</p>
+                        <p>Apply KVL to loop BCDB (Bottom triangle):</p>
+                        $$ -I_1 Q + I_2 S + I_g G = 0 $$
+                        <p>Since balanced ($I_g = 0$):</p>
+                        $$ I_1 Q = I_2 S \quad \text{...(ii)} $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 3: Divide Equations</p>
+                        <p>Divide equation (i) by (ii):</p>
+                        $$ \frac{I_1 P}{I_1 Q} = \frac{I_2 R}{I_2 S} $$
+                        $$ \frac{P}{Q} = \frac{R}{S} $$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-purple-600 text-white font-bold px-3 py-1 rounded">Q20</span>
+                <h2 class="text-2xl font-bold">Biot-Savart Law (Center of Coil)</h2>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <div class="bg-black/20 p-6 rounded-xl font-serif">
+                    <p class="italic text-sm text-gray-400 mb-4">Magnetic field at the center of a current carrying circular loop of radius $R$.</p>
+                    
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 1: Biot-Savart Law Formula</p>
+                        $$ dB = \frac{\mu_0}{4\pi} \frac{I dl \sin\theta}{r^2} $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 2: Apply Conditions</p>
+                        <p>For a circle, the element $dl$ is always perpendicular to radius $R$. So $\theta = 90^\circ$ and $r=R$.</p>
+                        $$ dB = \frac{\mu_0}{4\pi} \frac{I dl \sin 90^\circ}{R^2} = \frac{\mu_0 I}{4\pi R^2} dl $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 3: Integration</p>
+                        <p>Total field $B = \int dB$. The only variable is $dl$.</p>
+                        $$ B = \frac{\mu_0 I}{4\pi R^2} \int dl $$
+                        <p>Total length of loop $\int dl = 2\pi R$ (Circumference).</p>
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 4: Final Result</p>
+                        $$ B = \frac{\mu_0 I}{4\pi R^2} (2\pi R) $$
+                        $$ B = \frac{\mu_0 I}{2R} $$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-purple-600 text-white font-bold px-3 py-1 rounded">Q21</span>
+                <h2 class="text-2xl font-bold">Ampere's Circuital Law (Solenoid)</h2>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <div class="bg-black/20 p-6 rounded-xl font-serif">
+                    <p class="italic text-sm text-gray-400 mb-4">Long solenoid with $n$ turns per unit length. Consider a rectangular Amperian loop PQRS partly inside and partly outside.</p>
+                    
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 1: Line Integral of B</p>
+                        <p>$\oint \vec{B}\cdot d\vec{l}$ over PQRS is sum of 4 parts:</p>
+                        <ul class="list-disc ml-4 text-sm">
+                            <li>PQ (Inside): $B \cdot L$ (B is parallel to length)</li>
+                            <li>QR & SP (Perpendicular): 0 (B is perpendicular to path)</li>
+                            <li>RS (Outside): 0 (Field outside ideal solenoid is 0)</li>
+                        </ul>
+                        $$ \oint \vec{B}\cdot d\vec{l} = BL $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 2: Current Enclosed</p>
+                        <p>Number of turns in length $L$ is $N = nL$.</p>
+                        <p>Total current enclosed $I_{enc} = N \cdot I = nLI$.</p>
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 3: Apply Ampere's Law</p>
+                        $$ \oint \vec{B}\cdot d\vec{l} = \mu_0 I_{enc} $$
+                        $$ BL = \mu_0 (nLI) $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 4: Final Result</p>
+                        <p>Canceling $L$ from both sides:</p>
+                        $$ B = \mu_0 n I $$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-purple-600 text-white font-bold px-3 py-1 rounded">Q22</span>
+                <h2 class="text-2xl font-bold">LCR Circuit & Resonance</h2>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <div class="bg-black/20 p-6 rounded-xl font-serif">
+                    <p class="italic text-sm text-gray-400 mb-4">Series LCR circuit connected to source $V = V_0 \sin\omega t$.</p>
+                    
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 1: Phasor Relationships</p>
+                        <ul class="list-disc ml-4 text-sm">
+                            <li>$V_R$ is in phase with current $I$.</li>
+                            <li>$V_L$ leads current by $90^\circ$.</li>
+                            <li>$V_C$ lags current by $90^\circ$.</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 2: Net Voltage (Pythagoras)</p>
+                        <p>The net voltage $V$ is the vector sum:</p>
+                        $$ V^2 = V_R^2 + (V_L - V_C)^2 $$
+                        $$ V = \sqrt{(IR)^2 + (IX_L - IX_C)^2} $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 3: Impedance (Z)</p>
+                        <p>Dividing by $I$ gives Impedance $Z = V/I$:</p>
+                        $$ Z = \sqrt{R^2 + (X_L - X_C)^2} $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 4: Resonance Condition</p>
+                        <p>Resonance occurs when current is max (Impedance is min). This happens when $X_L = X_C$.</p>
+                        $$ \omega L = \frac{1}{\omega C} \Rightarrow \omega^2 = \frac{1}{LC} $$
+                        $$ 2\pi f = \frac{1}{\sqrt{LC}} \Rightarrow f = \frac{1}{2\pi\sqrt{LC}} $$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-purple-600 text-white font-bold px-3 py-1 rounded">Q23</span>
+                <h2 class="text-2xl font-bold">Lens Maker's Formula</h2>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <div class="bg-black/20 p-6 rounded-xl font-serif">
+                    <p class="italic text-sm text-gray-400 mb-4">Refraction through a lens with two spherical surfaces of radii $R_1$ and $R_2$.</p>
+                    
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 1: First Surface Refraction</p>
+                        <p>Light travels from air ($\mu_1$) to lens ($\mu_2$). Image forms at $v'$.</p>
+                        $$ \frac{\mu_2}{v'} - \frac{\mu_1}{u} = \frac{\mu_2-\mu_1}{R_1} \quad \text{...(i)} $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 2: Second Surface Refraction</p>
+                        <p>Light travels from lens ($\mu_2$) to air ($\mu_1$). The virtual object is at $v'$, final image at $v$.</p>
+                        $$ \frac{\mu_1}{v} - \frac{\mu_2}{v'} = \frac{\mu_1-\mu_2}{R_2} $$
+                        <p>Rearranging the RHS ($\mu_1-\mu_2 = -(\mu_2-\mu_1)$):</p>
+                        $$ \frac{\mu_1}{v} - \frac{\mu_2}{v'} = - \frac{\mu_2-\mu_1}{R_2} \quad \text{...(ii)} $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 3: Combine Equations</p>
+                        <p>Add (i) and (ii):</p>
+                        $$ \frac{\mu_1}{v} - \frac{\mu_1}{u} = (\mu_2-\mu_1) \left( \frac{1}{R_1} - \frac{1}{R_2} \right) $$
+                        $$ \frac{1}{v} - \frac{1}{u} = \frac{\mu_2-\mu_1}{\mu_1} \left( \frac{1}{R_1} - \frac{1}{R_2} \right) $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 4: Lens Formula Substitution</p>
+                        <p>We know $\frac{1}{v} - \frac{1}{u} = \frac{1}{f}$ and let $\mu = \mu_2/\mu_1$.</p>
+                        $$ \frac{1}{f} = (\mu-1) \left( \frac{1}{R_1} - \frac{1}{R_2} \right) $$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-purple-600 text-white font-bold px-3 py-1 rounded">Q24</span>
+                <h2 class="text-2xl font-bold">Prism Formula</h2>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <div class="bg-black/20 p-6 rounded-xl font-serif">
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 1: Prism Geometry</p>
+                        <p>For a prism with angle $A$, incident angle $i$, emergence angle $e$, and deviation $\delta$:</p>
+                        $$ A = r_1 + r_2 $$
+                        $$ A + \delta = i + e $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 2: Minimum Deviation Condition</p>
+                        <p>At minimum deviation ($\delta = \delta_m$), the ray passes symmetrically.</p>
+                        <p>So, $i = e$ and $r_1 = r_2 = r$.</p>
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 3: Substitute Values</p>
+                        <p>From $A = r + r \Rightarrow A = 2r \Rightarrow r = A/2$.</p>
+                        <p>From $A + \delta_m = i + i \Rightarrow 2i = A + \delta_m \Rightarrow i = \frac{A+\delta_m}{2}$.</p>
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 4: Snell's Law</p>
+                        <p>Refractive index $\mu = \frac{\sin i}{\sin r}$. Substituting $i$ and $r$:</p>
+                        $$ \mu = \frac{\sin(\frac{A+\delta_m}{2})}{\sin(\frac{A}{2})} $$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-purple-600 text-white font-bold px-3 py-1 rounded">Q25</span>
+                <h2 class="text-2xl font-bold">Einstein's Photoelectric Equation</h2>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <div class="bg-black/20 p-6 rounded-xl font-serif">
+                    <p class="italic text-sm text-gray-400 mb-4">Based on Law of Conservation of Energy.</p>
+                    
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 1: Energy of Photon</p>
+                        <p>Light consists of photons. Energy of one photon is:</p>
+                        $$ E = h\nu $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 2: Utilization of Energy</p>
+                        <p>When a photon strikes a metal surface, its energy is used in two parts:</p>
+                        <ol class="list-decimal ml-4 text-sm">
+                            <li>To overcome the attractive force of nucleus (Work Function $\phi_0$).</li>
+                            <li>To impart velocity to the electron (Kinetic Energy $K_{max}$).</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 3: Equation Formulation</p>
+                        $$ \text{Energy of Photon} = \text{Work Function} + \text{Kinetic Energy} $$
+                        $$ h\nu = \phi_0 + K_{max} $$
+                    </div>
+
+                    <div class="step-box">
+                        <p class="font-bold text-purple-300">Step 4: Final Form</p>
+                        <p>Rearranging for Kinetic Energy:</p>
+                        $$ K_{max} = h\nu - \phi_0 $$
+                        <p>Also written as: $\frac{1}{2}mv_{max}^2 = h(\nu - \nu_0)$</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
