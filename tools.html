@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP Board 12th - Power Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { dark: '#0f172a' } } } }
+    </script>
+    <style>
+        body { background-color: #0f172a; color: white; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* Flip Card Styles */
+        .perspective-1000 { perspective: 1000px; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 20px; border-radius: 1rem; }
+        .flip-card-front { background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1); }
+        .flip-card-back { background-color: #2563eb; color: white; transform: rotateY(180deg); border: 1px solid rgba(255,255,255,0.1); }
+
+        /* Match Game Line */
+        .selected { border-color: #3b82f6 !important; background: rgba(59, 130, 246, 0.2) !important; }
+        .matched { border-color: #22c55e !important; background: rgba(34, 197, 94, 0.2) !important; opacity: 0.5; cursor: default; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 max-w-6xl mx-auto pb-20">
+
+    <nav class="flex justify-between items-center mb-10">
+        <a href="index.html" class="text-blue-400 hover:text-white transition-colors">← Back to Hub</a>
+        <h1 class="text-2xl font-display font-bold">Exam Power Tools ⚡</h1>
+    </nav>
+
+    <div class="fixed top-0 left-0 w-full bg-red-600/90 text-white text-center py-2 z-50 backdrop-blur-md shadow-lg" id="countdown-bar">
+        <span class="font-bold text-sm md:text-base animate-pulse">⚠️ URGENT: Physics Exam is on Feb 13!</span>
+        <span id="countdown-timer" class="font-mono ml-2 font-bold"></span>
+    </div>
+    <div class="h-8"></div> <section class="mb-16">
+        <h2 class="text-3xl font-display font-bold mb-6 text-blue-400"><i class="fas fa-layer-group mr-2"></i>Rapid Fire Flashcards</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="flip-card h-48 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">Physics</span>
+                            <h3 class="text-xl font-bold mt-2">Lenz's Law</h3>
+                            <p class="text-xs text-gray-400 mt-4">(Tap to Flip)</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="text-sm">"The polarity of induced EMF is such that it tends to produce a current which opposes the change in magnetic flux that produced it."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card h-48 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <span class="text-xs text-green-400 font-bold uppercase tracking-wider">Chemistry</span>
+                            <h3 class="text-xl font-bold mt-2">Reimer-Tiemann</h3>
+                            <p class="text-xs text-gray-400 mt-4">(Tap to Flip)</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="text-sm">Phenol + CHCl₃ + NaOH → <strong>Salicylaldehyde</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card h-48 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">Physics</span>
+                            <h3 class="text-xl font-bold mt-2">TIR Condition</h3>
+                            <p class="text-xs text-gray-400 mt-4">(Tap to Flip)</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <ul class="text-sm text-left list-disc pl-4">
+                            <li>Light: Denser → Rarer</li>
+                            <li>Angle i > Critical Angle (ic)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card h-48 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <span class="text-xs text-green-400 font-bold uppercase tracking-wider">Chemistry</span>
+                            <h3 class="text-xl font-bold mt-2">Lucas Reagent</h3>
+                            <p class="text-xs text-gray-400 mt-4">(Tap to Flip)</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="text-sm"><strong>Conc. HCl + Anhydrous ZnCl₂</strong><br>(Used to distinguish 1°, 2°, 3° Alcohols)</p>
+                    </div>
+                </div>
+            </div>
+             <div class="flip-card h-48 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">Physics</span>
+                            <h3 class="text-xl font-bold mt-2">1 Tesla = ? Gauss</h3>
+                            <p class="text-xs text-gray-400 mt-4">(Tap to Flip)</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="text-2xl font-bold">10⁴ Gauss</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card h-48 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <span class="text-xs text-green-400 font-bold uppercase tracking-wider">Chemistry</span>
+                            <h3 class="text-xl font-bold mt-2">Haematite Formula</h3>
+                            <p class="text-xs text-gray-400 mt-4">(Tap to Flip)</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="text-2xl font-bold">Fe₂O₃</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="mb-16">
+        <h2 class="text-3xl font-display font-bold mb-6 text-green-400"><i class="fas fa-link mr-2"></i>Match the Column</h2>
+        <div class="glass p-6 rounded-2xl">
+            <p class="text-gray-400 mb-4 text-center">Tap an item on the LEFT, then tap its match on the RIGHT.</p>
+            
+            <div class="grid grid-cols-2 gap-8 md:gap-20">
+                <div class="space-y-4" id="col-left">
+                    <button class="match-btn w-full p-4 rounded-xl bg-surface border border-white/10 hover:border-blue-400 transition-all text-left" data-id="1">1. Magnetic Flux</button>
+                    <button class="match-btn w-full p-4 rounded-xl bg-surface border border-white/10 hover:border-blue-400 transition-all text-left" data-id="2">2. Capacitance</button>
+                    <button class="match-btn w-full p-4 rounded-xl bg-surface border border-white/10 hover:border-blue-400 transition-all text-left" data-id="3">3. Bauxite (Ore)</button>
+                    <button class="match-btn w-full p-4 rounded-xl bg-surface border border-white/10 hover:border-blue-400 transition-all text-left" data-id="4">4. Peptide Bond</button>
+                    <button class="match-btn w-full p-4 rounded-xl bg-surface border border-white/10 hover:border-blue-400 transition-all text-left" data-id="5">5. Power of Lens</button>
+                </div>
+
+                <div class="space-y-4" id="col-right">
+                    <button class="match-target w-full p-4 rounded-xl bg-surface border border-white/10 hover:border-green-400 transition-all text-right" data-match="2">Farad (F)</button>
+                    <button class="match-target w-full p-4 rounded-xl bg-surface border border-white/10 hover:border-green-400 transition-all text-right" data-match="5">Diopter (D)</button>
+                    <button class="match-target w-full p-4 rounded-xl bg-surface border border-white/10 hover:border-green-400 transition-all text-right" data-match="1">Weber (Wb)</button>
+                    <button class="match-target w-full p-4 rounded-xl bg-surface border border-white/10 hover:border-green-400 transition-all text-right" data-match="4">Proteins</button>
+                    <button class="match-target w-full p-4 rounded-xl bg-surface border border-white/10 hover:border-green-400 transition-all text-right" data-match="3">Al₂O₃</button>
+                </div>
+            </div>
+            <p id="match-feedback" class="text-center mt-6 font-bold h-6"></p>
+        </div>
+    </section>
+
+
+    <section class="mb-16">
+        <h2 class="text-3xl font-display font-bold mb-6 text-yellow-400"><i class="fas fa-project-diagram mr-2"></i>Diagram Practice</h2>
+        <div class="glass p-8 rounded-2xl border-l-4 border-yellow-500">
+            <h3 class="text-xl font-bold mb-4">Identify Parts of a Transformer</h3>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="bg-white p-4 rounded-xl max-w-sm w-full">
+                    <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="50" y="20" width="100" height="110" fill="none" stroke="#333" stroke-width="8"/>
+                        <rect x="70" y="40" width="60" height="70" fill="none" stroke="#333" stroke-width="2"/>
+                        
+                        <path d="M 20 40 Q 60 40 60 50 T 20 60 T 60 70 T 20 80 T 60 90 T 20 100" fill="none" stroke="red" stroke-width="3"/>
+                        <text x="5" y="75" font-family="sans-serif" font-size="14" font-weight="bold" fill="red">A</text>
+
+                        <path d="M 180 30 Q 140 30 140 45 T 180 60 T 140 75 T 180 90 T 140 105 T 180 120" fill="none" stroke="blue" stroke-width="3"/>
+                        <text x="185" y="75" font-family="sans-serif" font-size="14" font-weight="bold" fill="blue">B</text>
+
+                        <text x="90" y="75" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333">C</text>
+                    </svg>
+                </div>
+
+                <div class="w-full space-y-4">
+                    <div>
+                        <label class="text-red-400 font-bold">Part A (Red Coil)</label>
+                        <select id="part-a" class="w-full bg-surface p-2 rounded border border-white/20 mt-1">
+                            <option value="">Select...</option>
+                            <option value="correct">Primary Coil (Input)</option>
+                            <option value="wrong">Secondary Coil</option>
+                            <option value="wrong">Soft Iron Core</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-blue-400 font-bold">Part B (Blue Coil)</label>
+                        <select id="part-b" class="w-full bg-surface p-2 rounded border border-white/20 mt-1">
+                            <option value="">Select...</option>
+                            <option value="wrong">Primary Coil</option>
+                            <option value="correct">Secondary Coil (Output)</option>
+                            <option value="wrong">Laminated Core</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-gray-400 font-bold">Part C (Center)</label>
+                        <select id="part-c" class="w-full bg-surface p-2 rounded border border-white/20 mt-1">
+                            <option value="">Select...</option>
+                            <option value="wrong">Copper Winding</option>
+                            <option value="wrong">Magnet</option>
+                            <option value="correct">Soft Iron Core</option>
+                        </select>
+                    </div>
+                    <button onclick="checkDiagram()" class="w-full py-2 bg-yellow-500 text-black font-bold rounded hover:bg-yellow-400">Check Labels</button>
+                    <p id="diagram-feedback" class="text-center font-bold mt-2"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold mb-6 text-purple-400"><i class="fas fa-calculator mr-2"></i>Formula Solver</h2>
+        <div class="glass p-6 rounded-2xl max-w-md mx-auto">
+            <label class="block mb-2 text-sm text-gray-400">Select Formula:</label>
+            <select id="formula-select" class="w-full p-3 bg-black/30 rounded-lg mb-4 border border-white/10" onchange="updateCalcUI()">
+                <option value="ohm">Ohm's Law (V = IR)</option>
+                <option value="motion">Motion (v = u + at)</option>
+                <option value="force">Force (F = ma)</option>
+            </select>
+
+            <div id="calc-inputs" class="space-y-3 mb-4">
+                </div>
+
+            <button onclick="calculate()" class="w-full py-3 bg-purple-600 rounded-lg font-bold hover:bg-purple-500">Calculate</button>
+            
+            <div class="mt-4 p-4 bg-black/40 rounded-lg text-center">
+                <span class="text-gray-400 text-sm">Result:</span>
+                <div id="calc-result" class="text-2xl font-bold text-white">-</div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        // --- 1. COUNTDOWN LOGIC ---
+        function updateCountdown() {
+            const examDate = new Date("February 13, 2026 09:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = examDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("countdown-timer").innerHTML = `${days}d ${hours}h ${minutes}m`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- 2. MATCH GAME LOGIC ---
+        let selectedBtn = null;
+        
+        document.querySelectorAll('.match-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if(btn.classList.contains('matched')) return;
+                // Deselect others
+                document.querySelectorAll('.match-btn').forEach(b => b.classList.remove('selected'));
+                // Select this
+                btn.classList.add('selected');
+                selectedBtn = btn;
+            });
+        });
+
+        document.querySelectorAll('.match-target').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if(!selectedBtn || btn.classList.contains('matched')) return;
+
+                const feedback = document.getElementById('match-feedback');
+                
+                if (selectedBtn.dataset.id === btn.dataset.match) {
+                    // Match!
+                    selectedBtn.classList.add('matched');
+                    btn.classList.add('matched');
+                    selectedBtn.classList.remove('selected');
+                    selectedBtn = null;
+                    feedback.textContent = "Correct Match! 🎉";
+                    feedback.className = "text-center mt-6 font-bold h-6 text-green-400";
+                } else {
+                    // Wrong
+                    feedback.textContent = "Wrong Match! Try again. ❌";
+                    feedback.className = "text-center mt-6 font-bold h-6 text-red-400";
+                    setTimeout(() => feedback.textContent = "", 1000);
+                }
+            });
+        });
+
+        // --- 3. DIAGRAM LOGIC ---
+        function checkDiagram() {
+            const a = document.getElementById('part-a').value;
+            const b = document.getElementById('part-b').value;
+            const c = document.getElementById('part-c').value;
+            const fb = document.getElementById('diagram-feedback');
+
+            if(a === 'correct' && b === 'correct' && c === 'correct') {
+                fb.textContent = "All Correct! Excellent! 🌟";
+                fb.className = "text-center font-bold mt-2 text-green-400";
+            } else {
+                fb.textContent = "Some labels are wrong. Check again.";
+                fb.className = "text-center font-bold mt-2 text-red-400";
+            }
+        }
+
+        // --- 4. CALCULATOR LOGIC ---
+        const calcConfig = {
+            ohm: { inputs: ['I (Current)', 'R (Resistance)'], unit: 'Volts' },
+            motion: { inputs: ['u (Initial Velocity)', 'a (Acceleration)', 't (Time)'], unit: 'm/s' },
+            force: { inputs: ['m (Mass)', 'a (Acceleration)'], unit: 'Newton' }
+        };
+
+        function updateCalcUI() {
+            const type = document.getElementById('formula-select').value;
+            const container = document.getElementById('calc-inputs');
+            container.innerHTML = '';
+            
+            calcConfig[type].inputs.forEach((label, index) => {
+                container.innerHTML += `<input type="number" id="inp-${index}" placeholder="${label}" class="w-full p-3 bg-surface rounded border border-white/10 text-white">`;
+            });
+            document.getElementById('calc-result').innerText = "-";
+        }
+
+        function calculate() {
+            const type = document.getElementById('formula-select').value;
+            const inputs = Array.from(document.getElementById('calc-inputs').querySelectorAll('input')).map(i => parseFloat(i.value));
+            
+            let res = 0;
+            if(type === 'ohm') res = inputs[0] * inputs[1]; // V=IR
+            if(type === 'motion') res = inputs[0] + (inputs[1] * inputs[2]); // v=u+at
+            if(type === 'force') res = inputs[0] * inputs[1]; // F=ma
+
+            if(isNaN(res)) {
+                document.getElementById('calc-result').innerText = "Invalid Input";
+            } else {
+                document.getElementById('calc-result').innerText = res.toFixed(2) + " " + calcConfig[type].unit;
+            }
+        }
+        
+        // Init Calculator
+        updateCalcUI();
+    </script>
+</body>
+</html>

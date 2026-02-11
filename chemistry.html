@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry - MP Board Class 12 Preparation Kit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
+                    colors: { primary: '#10b981', surface: '#1e293b', dark: '#0f172a' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .table-row-hover:hover { background: rgba(16, 185, 129, 0.1); }
+        th { background: rgba(15, 23, 42, 0.8); color: #34d399; }
+        .chem-formula { font-family: 'Times New Roman', serif; font-style: italic; }
+    </style>
+</head>
+<body class="p-4 md:p-8 max-w-7xl mx-auto">
+
+    <nav class="flex justify-between items-center mb-12">
+        <a href="index.html" class="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors">
+            <i class="fas fa-arrow-left"></i> Back to Hub
+        </a>
+        <div class="text-right">
+            <h1 class="font-display text-2xl md:text-3xl font-bold">Chemistry Prep Kit 2026</h1>
+            <p class="text-xs text-gray-400">Target: 60+ Marks</p>
+        </div>
+    </nav>
+
+    <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+            <span class="bg-green-500 text-white font-bold px-4 py-2 rounded-lg">PART 1</span>
+            <h2 class="text-3xl font-display font-bold">"Zero-Math" Subjective Questions</h2>
+        </div>
+
+        <div class="space-y-8 mb-12">
+            <h3 class="text-xl font-bold text-green-400 border-b border-green-500/30 pb-2">1. Important Differences</h3>
+            
+            <div class="glass rounded-xl overflow-hidden">
+                <div class="p-4 bg-green-500/10 font-bold">Q1. DNA vs RNA [cite: 244]</div>
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead>
+                        <tr><th class="p-4">Feature</th><th class="p-4">DNA</th><th class="p-4">RNA</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr class="table-row-hover"><td class="p-4 font-medium">Sugar</td><td class="p-4">Deoxyribose sugar [cite: 244]</td><td class="p-4">Ribose sugar [cite: 245]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-medium">Strands</td><td class="p-4">Double-stranded (alpha-helix) [cite: 245]</td><td class="p-4">Single-stranded [cite: 245]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-medium">Base</td><td class="p-4">Contains Thymine (T) [cite: 245]</td><td class="p-4">Contains Uracil (U) [cite: 246]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="glass rounded-xl overflow-hidden">
+                <div class="p-4 bg-green-500/10 font-bold">Q2. Order vs Molecularity [cite: 247]</div>
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead>
+                        <tr><th class="p-4">Order of Reaction</th><th class="p-4">Molecularity</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr class="table-row-hover"><td class="p-4">Sum of powers of concentration terms [cite: 248]</td><td class="p-4">Number of reacting species colliding simultaneously [cite: 248]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4">Can be zero or fractional [cite: 249]</td><td class="p-4">Always a whole number (1, 2, 3) [cite: 249]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4">Determined experimentally [cite: 249]</td><td class="p-4">Theoretical concept [cite: 249]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="glass rounded-xl overflow-hidden">
+                <div class="p-4 bg-green-500/10 font-bold">Q3. Lanthanides vs Actinides [cite: 250]</div>
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead>
+                        <tr><th class="p-4">Lanthanides</th><th class="p-4">Actinides</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr class="table-row-hover"><td class="p-4">Last electron enters 4f orbital [cite: 250]</td><td class="p-4">Last electron enters 5f orbital [cite: 251]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4">Binding energy of 4f is higher [cite: 251]</td><td class="p-4">Binding energy of 5f is lower [cite: 251]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4">Most are non-radioactive [cite: 252]</td><td class="p-4">All are radioactive [cite: 252]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4">Less tendency to form complexes [cite: 252]</td><td class="p-4">High tendency to form complexes [cite: 253]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="glass rounded-xl overflow-hidden">
+                <div class="p-4 bg-green-500/10 font-bold">Q4. SN1 vs SN2 Reactions [cite: 254]</div>
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead>
+                        <tr><th class="p-4">SN1 Reaction</th><th class="p-4">SN2 Reaction</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr class="table-row-hover"><td class="p-4">Two steps (Carbocation intermediate) [cite: 254]</td><td class="p-4">Single step (Transition state) [cite: 255]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4">Reactivity: 3° > 2° > 1° [cite: 255]</td><td class="p-4">Reactivity: 1° > 2° > 3° [cite: 255]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4">Leads to Racemization [cite: 256]</td><td class="p-4">Leads to Inversion (Walden) [cite: 256]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="glass rounded-xl overflow-hidden">
+                <div class="p-4 bg-green-500/10 font-bold">Q5. Ideal vs Non-Ideal Solutions [cite: 257]</div>
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead>
+                        <tr><th class="p-4">Ideal Solution</th><th class="p-4">Non-Ideal Solution</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr class="table-row-hover"><td class="p-4">Obeys Raoult's Law at all concentrations [cite: 257]</td><td class="p-4">Does not obey Raoult's Law [cite: 258]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4">Enthalpy of mixing is zero [cite: 258]</td><td class="p-4">Enthalpy of mixing is not zero [cite: 258]</td></tr>
+                        <tr class="table-row-hover"><td class="p-4">Volume change on mixing is zero [cite: 262]</td><td class="p-4">Volume change on mixing is not zero [cite: 262]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="space-y-6 mb-12">
+            <h3 class="text-xl font-bold text-green-400 border-b border-green-500/30 pb-2">2. Reasoning Questions</h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass p-6 rounded-xl border-l-4 border-blue-400">
+                    <h4 class="font-bold text-lg mb-2">Q6. Transition Metals & Color</h4>
+                    <p class="text-gray-300">Due to presence of <strong>unpaired d-electrons</strong>. They absorb energy from visible light to undergo d-d transitions. Complementary color is observed[cite: 265, 266].</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-l-4 border-yellow-400">
+                    <h4 class="font-bold text-lg mb-2">Q7. Transition Metals as Catalysts</h4>
+                    <ul class="list-disc list-inside text-gray-300 text-sm space-y-1">
+                        <li>Show <strong>variable oxidation states</strong> (form unstable intermediates)[cite: 269].</li>
+                        <li>Provide <strong>large surface area</strong> for reactants[cite: 270].</li>
+                    </ul>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-l-4 border-purple-400">
+                    <h4 class="font-bold text-lg mb-2">Q8. Lanthanide Contraction</h4>
+                    <p class="text-gray-300 mb-2"><strong>Def:</strong> Steady decrease in atomic/ionic radii of Lanthanides with increasing atomic number[cite: 272].</p>
+                    <p class="text-sm text-purple-400"><strong>Cause:</strong> Poor shielding effect of 4f electrons[cite: 273].</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-l-4 border-red-400">
+                    <h4 class="font-bold text-lg mb-2">Q9. Phenol vs Alcohol Acidity</h4>
+                    <p class="text-gray-300">Phenoxide ion is stabilized by <strong>resonance</strong>. Alkoxide ion is unstable due to electron-donating (+I) effect of alkyl group[cite: 275, 276].</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-l-4 border-green-400">
+                    <h4 class="font-bold text-lg mb-2">Q10. Haloarenes Reactivity</h4>
+                    <p class="text-gray-300">Less reactive towards nucleophilic substitution because <strong>Resonance</strong> gives C-Cl bond a partial double bond character (shorter and stronger)[cite: 278, 279].</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <h3 class="text-xl font-bold text-green-400 border-b border-green-500/30 pb-2">3. Definitions & Short Notes</h3>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2">Q11. Ligand & Coordination No.</h4>
+                    <p class="text-sm text-gray-300 mb-2"><strong>Ligand:</strong> Ion/molecule donating electron pair to central metal (e.g., NH₃, CN⁻)[cite: 286].</p>
+                    <p class="text-sm text-gray-300"><strong>Coordination No:</strong> Total coordinate bonds formed with central metal[cite: 288].</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2">Q12. Denaturation of Protein</h4>
+                    <p class="text-sm text-gray-300">When subjected to heat/pH change, H-bonds break, globules unfold, helix uncoils. Protein loses biological activity (e.g., boiling egg)[cite: 290, 291].</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2">Q13. SHE (Standard Hydrogen Electrode)</h4>
+                    <p class="text-sm text-gray-300 mb-2">Reference electrode with 0.00 V potential[cite: 293].</p>
+                    <p class="text-xs text-green-400">Construction: Pt wire with Pt black, 1M H⁺ solution, H₂ gas at 1 bar[cite: 294].</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2">Q14. Vitamins</h4>
+                    <ul class="text-sm text-gray-300 space-y-1">
+                        <li><strong>Vit A:</strong> Night Blindness[cite: 296].</li>
+                        <li><strong>Vit C:</strong> Scurvy (Water soluble)[cite: 297].</li>
+                        <li><strong>Vit D:</strong> Rickets[cite: 298].</li>
+                    </ul>
+                </div>
+
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2">Q15. Osmotic Pressure</h4>
+                    <p class="text-sm text-gray-300 mb-2">Minimum excess pressure on solution side to prevent solvent flow through semi-permeable membrane[cite: 300].</p>
+                    <p class="font-mono text-center bg-black/20 rounded p-1">π = CRT [cite: 301]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+            <span class="bg-purple-500 text-white font-bold px-4 py-2 rounded-lg">PART 2</span>
+            <h2 class="text-3xl font-display font-bold">Important Reactions & Laws</h2>
+        </div>
+
+        <h3 class="text-xl font-bold text-purple-400 mb-6">1. Name Reactions (Must Memorize)</h3>
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q16. Reimer-Tiemann [cite: 308]</h4>
+                <p class="text-sm text-gray-300">Phenol + CHCl₃ + NaOH → Salicylaldehyde [cite: 309]</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q17. Wurtz Reaction [cite: 310]</h4>
+                <p class="text-sm text-gray-300">2R-X + 2Na → Higher Alkane (R-R) + 2NaX [cite: 311]</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q18. Cannizzaro Reaction [cite: 312]</h4>
+                <p class="text-sm text-gray-300 mb-2">Aldehydes with NO α-H + Conc. Alkali → Alcohol + Acid Salt [cite: 313]</p>
+                <p class="text-xs font-mono text-green-400">2HCHO + KOH → CH₃OH + HCOOK [cite: 314]</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q19. Aldol Condensation [cite: 315]</h4>
+                <p class="text-sm text-gray-300">Aldehydes WITH α-H (CH₃CHO) + Dilute Alkali → Beta-hydroxy aldehyde (Aldol) [cite: 316]</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q20. Hoffmann Bromamide [cite: 316]</h4>
+                <p class="text-sm text-gray-300">Amide + Br₂ + KOH → Primary Amine (1 less carbon) [cite: 317]</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q21. Carbylamine Test [cite: 318]</h4>
+                <p class="text-sm text-gray-300">1° Amine + CHCl₃ + 3KOH → Isocyanide (Foul smell) [cite: 319]</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q22. Williamson's Synthesis [cite: 320]</h4>
+                <p class="text-sm text-gray-300">R-X + R'ONa → R-O-R' (Ether) [cite: 321]</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q23. Sandmeyer's Reaction [cite: 322]</h4>
+                <p class="text-sm text-gray-300">Benzene Diazonium Chloride → Chlorobenzene (using Cu₂Cl₂/HCl) [cite: 323]</p>
+            </div>
+        </div>
+
+        <h3 class="text-xl font-bold text-purple-400 mb-6">2. Physical Chemistry Laws</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="glass p-6 rounded-xl">
+                <h4 class="font-bold mb-2">Q24. Henry's Law [cite: 328]</h4>
+                <p class="font-mono text-green-400">p = Kₕ · X</p>
+                <p class="text-xs text-gray-400">Solubility of gas ∝ Pressure</p>
+            </div>
+            <div class="glass p-6 rounded-xl">
+                <h4 class="font-bold mb-2">Q25. Kohlrausch's Law [cite: 329]</h4>
+                <p class="text-sm text-gray-300">Limiting molar conductivity is sum of ionic conductivities.</p>
+            </div>
+            <div class="glass p-6 rounded-xl">
+                <h4 class="font-bold mb-2">Q26. Nernst Equation [cite: 329]</h4>
+                <p class="text-sm text-gray-300">Used to calculate EMF of a cell.</p>
+            </div>
+            <div class="glass p-6 rounded-xl">
+                <h4 class="font-bold mb-2">Q27. Faraday's 1st Law [cite: 330]</h4>
+                <p class="font-mono text-green-400">W = Z · I · t</p>
+                <p class="text-xs text-gray-400">Mass deposited ∝ Charge</p>
+            </div>
+            <div class="glass p-6 rounded-xl">
+                <h4 class="font-bold mb-2">Q28. Arrhenius Equation [cite: 330]</h4>
+                <p class="font-mono text-green-400">k = A · e^(-Ea/RT)</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+            <span class="bg-blue-500 text-white font-bold px-4 py-2 rounded-lg">PART 3</span>
+            <h2 class="text-3xl font-display font-bold">Top 77 MCQs (Objective)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q1. Physical</p>
+                <p class="font-semibold">Colligative property</p>
+                <p class="text-green-400 font-bold mt-1">Osmotic Pressure [cite: 334]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q2. Physical</p>
+                <p class="font-semibold">Unit of Molality</p>
+                <p class="text-green-400 font-bold mt-1">mol/kg [cite: 335]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q3. Physical</p>
+                <p class="font-semibold">Highest Boiling Point</p>
+                <p class="text-green-400 font-bold mt-1">1M Na₂SO₄ [cite: 337]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q4. Physical</p>
+                <p class="font-semibold">Solid Solution Example</p>
+                <p class="text-green-400 font-bold mt-1">Brass [cite: 338]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q5. Physical</p>
+                <p class="font-semibold">Henry's Constant depends on</p>
+                <p class="text-green-400 font-bold mt-1">Temperature [cite: 341]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q6. Physical</p>
+                <p class="font-semibold">Unit of Cell Constant</p>
+                <p class="text-green-400 font-bold mt-1">cm⁻¹ [cite: 342]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q7. Physical</p>
+                <p class="font-semibold">SHE Potential</p>
+                <p class="text-green-400 font-bold mt-1">0.00 V [cite: 343]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q8. Physical</p>
+                <p class="font-semibold">Corrosion of Iron</p>
+                <p class="text-green-400 font-bold mt-1">Electrochemical process [cite: 344]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q9. Physical</p>
+                <p class="font-semibold">Zero Order Rate Unit</p>
+                <p class="text-green-400 font-bold mt-1">mol L⁻¹ s⁻¹ [cite: 346]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q10. Physical</p>
+                <p class="font-semibold">First Order Rate Unit</p>
+                <p class="text-green-400 font-bold mt-1">s⁻¹ [cite: 348]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q11. Physical</p>
+                <p class="font-semibold">First Order Half-Life</p>
+                <p class="text-green-400 font-bold mt-1">0.693/k [cite: 349]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q12. Physical</p>
+                <p class="font-semibold">Molecularity cannot be</p>
+                <p class="text-green-400 font-bold mt-1">Zero [cite: 350]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q13. Physical</p>
+                <p class="font-semibold">Arrhenius Eq Ea</p>
+                <p class="text-green-400 font-bold mt-1">Activation Energy [cite: 351]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q14. Physical</p>
+                <p class="font-semibold">Dry Cell Electrolyte</p>
+                <p class="text-green-400 font-bold mt-1">NH₄Cl + ZnCl₂ [cite: 352]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q15. Physical</p>
+                <p class="font-semibold">Osmotic Pressure Formula</p>
+                <p class="text-green-400 font-bold mt-1">π = CRT [cite: 357]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q16. Physical</p>
+                <p class="font-semibold">Limiting Conductivity Law</p>
+                <p class="text-green-400 font-bold mt-1">Kohlrausch's Law [cite: 358]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q17. Physical</p>
+                <p class="font-semibold">Charge to reduce 1 mol Al³⁺</p>
+                <p class="text-green-400 font-bold mt-1">3 F [cite: 359]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q18. Physical</p>
+                <p class="font-semibold">Conductivity with dilution</p>
+                <p class="text-green-400 font-bold mt-1">Decreases [cite: 361]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q19. Physical</p>
+                <p class="font-semibold">Molar Conductivity with dilution</p>
+                <p class="text-green-400 font-bold mt-1">Increases [cite: 362]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-blue-400">
+                <p class="text-gray-400 text-xs mb-1">Q20. Physical</p>
+                <p class="font-semibold">Ideal Solution</p>
+                <p class="text-green-400 font-bold mt-1">Benzene + Toluene [cite: 363]</p>
+            </div>
+
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q21. Inorganic</p>
+                <p class="font-semibold">Colorless Ion</p>
+                <p class="text-green-400 font-bold mt-1">Zn²⁺ [cite: 365]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q22. Inorganic</p>
+                <p class="font-semibold">Color of Transition Ions due to</p>
+                <p class="text-green-400 font-bold mt-1">d-d transition [cite: 366]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q23. Inorganic</p>
+                <p class="font-semibold">Lanthanide Oxidation State</p>
+                <p class="text-green-400 font-bold mt-1">+3 [cite: 368]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q24. Inorganic</p>
+                <p class="font-semibold">Cause of Lanthanide Contraction</p>
+                <p class="text-green-400 font-bold mt-1">Poor shielding of 4f [cite: 370]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q25. Inorganic</p>
+                <p class="font-semibold">Actinide Example</p>
+                <p class="text-green-400 font-bold mt-1">Uranium [cite: 371]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q26. Inorganic</p>
+                <p class="font-semibold">Mohr's Salt</p>
+                <p class="text-green-400 font-bold mt-1">Double Salt [cite: 372]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q27. Inorganic</p>
+                <p class="font-semibold">Oxidation State of Ni in Ni(CO)₄</p>
+                <p class="text-green-400 font-bold mt-1">0 [cite: 373]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q28. Inorganic</p>
+                <p class="font-semibold">EDTA is</p>
+                <p class="text-green-400 font-bold mt-1">Hexadentate ligand [cite: 375]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q29. Inorganic</p>
+                <p class="font-semibold">Shape of [Ni(CN)₄]²⁻</p>
+                <p class="text-green-400 font-bold mt-1">Square Planar (dsp²) [cite: 376]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q30. Inorganic</p>
+                <p class="font-semibold">Not a Transition Element</p>
+                <p class="text-green-400 font-bold mt-1">Zn [cite: 377]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q31. Inorganic</p>
+                <p class="font-semibold">Magnetic Moment Formula</p>
+                <p class="text-green-400 font-bold mt-1">√(n(n+2)) B.M. [cite: 378]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q32. Inorganic</p>
+                <p class="font-semibold">Coordination No. of Co in [Co(en)₃]³⁺</p>
+                <p class="text-green-400 font-bold mt-1">6 [cite: 379]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q33. Inorganic</p>
+                <p class="font-semibold">K₄[Fe(CN)₆] is</p>
+                <p class="text-green-400 font-bold mt-1">Complex Salt [cite: 384]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q34. Inorganic</p>
+                <p class="font-semibold">Coinage Metals Group</p>
+                <p class="text-green-400 font-bold mt-1">11 (Cu, Ag, Au) [cite: 385]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-purple-400">
+                <p class="text-gray-400 text-xs mb-1">Q35. Inorganic</p>
+                <p class="font-semibold">Liquid Metal</p>
+                <p class="text-green-400 font-bold mt-1">Hg [cite: 387]</p>
+            </div>
+
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q36. Organic</p>
+                <p class="font-semibold">SN1 Favored by</p>
+                <p class="text-green-400 font-bold mt-1">3° Alkyl Halide [cite: 390]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q37. Organic</p>
+                <p class="font-semibold">Lucas Reagent</p>
+                <p class="text-green-400 font-bold mt-1">Conc. HCl + ZnCl₂ [cite: 392]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q38. Organic</p>
+                <p class="font-semibold">Rectified Spirit</p>
+                <p class="text-green-400 font-bold mt-1">95.5% Ethanol [cite: 394]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q39. Organic</p>
+                <p class="font-semibold">Phenol + Zn dust</p>
+                <p class="text-green-400 font-bold mt-1">Benzene [cite: 396]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q40. Organic</p>
+                <p class="font-semibold">Phenol + CHCl₃ + NaOH</p>
+                <p class="text-green-400 font-bold mt-1">Salicylaldehyde [cite: 398]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q41. Organic</p>
+                <p class="font-semibold">Cannizzaro given by</p>
+                <p class="text-green-400 font-bold mt-1">HCHO [cite: 399]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q42. Organic</p>
+                <p class="font-semibold">Aldol given by</p>
+                <p class="text-green-400 font-bold mt-1">CH₃CHO [cite: 400]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q43. Organic</p>
+                <p class="font-semibold">Tear Gas</p>
+                <p class="text-green-400 font-bold mt-1">CCl₃NO₂ [cite: 401]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q44. Organic</p>
+                <p class="font-semibold">Carbylamine Test</p>
+                <p class="text-green-400 font-bold mt-1">1° Amine [cite: 402]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q45. Organic</p>
+                <p class="font-semibold">Aniline + Bromine Water</p>
+                <p class="text-green-400 font-bold mt-1">2,4,6-Tribromoaniline [cite: 403]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q46. Organic</p>
+                <p class="font-semibold">Vinegar Acid</p>
+                <p class="text-green-400 font-bold mt-1">Acetic Acid [cite: 404]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q47. Organic</p>
+                <p class="font-semibold">Basicity in Gas Phase</p>
+                <p class="text-green-400 font-bold mt-1">3° > 2° > 1° [cite: 406]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q48. Organic</p>
+                <p class="font-semibold">Oil of Mirbane</p>
+                <p class="text-green-400 font-bold mt-1">Nitrobenzene [cite: 408]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q49. Organic</p>
+                <p class="font-semibold">Phosgene Gas</p>
+                <p class="text-green-400 font-bold mt-1">COCl₂ [cite: 410]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q50. Organic</p>
+                <p class="font-semibold">Iodoform Test Group</p>
+                <p class="text-green-400 font-bold mt-1">CH₃-CO- or CH₃-CH(OH)- [cite: 411]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q51. Organic</p>
+                <p class="font-semibold">Grignard + Acetone</p>
+                <p class="text-green-400 font-bold mt-1">3° Alcohol [cite: 417]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q52. Organic</p>
+                <p class="font-semibold">Reduction of Cyanide</p>
+                <p class="text-green-400 font-bold mt-1">1° Amine [cite: 419]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q53. Organic</p>
+                <p class="font-semibold">Hinsberg Reagent</p>
+                <p class="text-green-400 font-bold mt-1">Benzenesulphonyl Chloride [cite: 421]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q54. Organic</p>
+                <p class="font-semibold">Wurtz Product</p>
+                <p class="text-green-400 font-bold mt-1">Higher Alkane [cite: 422]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-green-400">
+                <p class="text-gray-400 text-xs mb-1">Q55. Organic</p>
+                <p class="font-semibold">Sandmeyer Catalyst</p>
+                <p class="text-green-400 font-bold mt-1">Cu₂Cl₂/HCl [cite: 423]</p>
+            </div>
+
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q56. Biomol</p>
+                <p class="font-semibold">Vit A Deficiency</p>
+                <p class="text-green-400 font-bold mt-1">Night Blindness [cite: 426]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q57. Biomol</p>
+                <p class="font-semibold">Vit C Deficiency</p>
+                <p class="text-green-400 font-bold mt-1">Scurvy [cite: 428]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q58. Biomol</p>
+                <p class="font-semibold">Vit D Deficiency</p>
+                <p class="text-green-400 font-bold mt-1">Rickets [cite: 430]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q59. Biomol</p>
+                <p class="font-semibold">Vitamin with Cobalt</p>
+                <p class="text-green-400 font-bold mt-1">B12 [cite: 431]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q60. Biomol</p>
+                <p class="font-semibold">Metal in Haemoglobin</p>
+                <p class="text-green-400 font-bold mt-1">Fe [cite: 433]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q61. Biomol</p>
+                <p class="font-semibold">Metal in Chlorophyll</p>
+                <p class="text-green-400 font-bold mt-1">Mg [cite: 435]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q62. Biomol</p>
+                <p class="font-semibold">DNA Sugar</p>
+                <p class="text-green-400 font-bold mt-1">2-Deoxyribose [cite: 437]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q63. Biomol</p>
+                <p class="font-semibold">RNA Sugar</p>
+                <p class="text-green-400 font-bold mt-1">Ribose [cite: 439]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q64. Biomol</p>
+                <p class="font-semibold">Base NOT in DNA</p>
+                <p class="text-green-400 font-bold mt-1">Uracil [cite: 441]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q65. Biomol</p>
+                <p class="font-semibold">Base NOT in RNA</p>
+                <p class="text-green-400 font-bold mt-1">Thymine [cite: 443]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q66. Biomol</p>
+                <p class="font-semibold">Proteins are polymers of</p>
+                <p class="text-green-400 font-bold mt-1">Amino Acids [cite: 445]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q67. Biomol</p>
+                <p class="font-semibold">Peptide Bond</p>
+                <p class="text-green-400 font-bold mt-1">-CO-NH- [cite: 446]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q68. Biomol</p>
+                <p class="font-semibold">Glycosidic Linkage</p>
+                <p class="text-green-400 font-bold mt-1">Carbohydrates [cite: 447]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q69. Biomol</p>
+                <p class="font-semibold">Glucose is</p>
+                <p class="text-green-400 font-bold mt-1">Aldohexose [cite: 452]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q70. Biomol</p>
+                <p class="font-semibold">Water Soluble Vitamins</p>
+                <p class="text-green-400 font-bold mt-1">B and C [cite: 453]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q71. Biomol</p>
+                <p class="font-semibold">Denaturation doesn't affect</p>
+                <p class="text-green-400 font-bold mt-1">Primary Structure [cite: 454]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q72. Biomol</p>
+                <p class="font-semibold">Globular Protein</p>
+                <p class="text-green-400 font-bold mt-1">Albumin / Haemoglobin [cite: 456]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q73. Biomol</p>
+                <p class="font-semibold">Fibrous Protein</p>
+                <p class="text-green-400 font-bold mt-1">Keratin (Hair) [cite: 458]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q74. Biomol</p>
+                <p class="font-semibold">Bakelite Monomers</p>
+                <p class="text-green-400 font-bold mt-1">Phenol + Formaldehyde [cite: 459]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q75. Biomol</p>
+                <p class="font-semibold">Natural Rubber Monomer</p>
+                <p class="text-green-400 font-bold mt-1">Isoprene [cite: 461]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q76. General</p>
+                <p class="font-semibold">Potash Alum Formula</p>
+                <p class="text-green-400 font-bold mt-1">K₂SO₄·Al₂(SO₄)₃·24H₂O [cite: 462]</p>
+            </div>
+            <div class="glass p-4 rounded-lg border-l-2 border-yellow-400">
+                <p class="text-gray-400 text-xs mb-1">Q77. General</p>
+                <p class="font-semibold">IUPAC of K₄[Fe(CN)₆]</p>
+                <p class="text-green-400 font-bold mt-1">Potassium hexacyanoferrate(II) [cite: 462]</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

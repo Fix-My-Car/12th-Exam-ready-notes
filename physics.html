@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics - MP Board Class 12 Preparation Kit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
+                    colors: { primary: '#3b82f6', surface: '#1e293b', dark: '#0f172a' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .table-row-hover:hover { background: rgba(59, 130, 246, 0.1); }
+        th { background: rgba(15, 23, 42, 0.8); color: #60a5fa; }
+        
+        /* Print Styles */
+        @media print {
+            body { background-color: white !important; color: black !important; }
+            .glass { background: white !important; border: 1px solid #ccc !important; color: black !important; box-shadow: none !important; }
+            nav, button, .mcq-box, .fixed, .no-print { display: none !important; }
+            h1, h2, h3, h4 { color: black !important; }
+            table { border-collapse: collapse; width: 100%; }
+            th, td { border: 1px solid black; padding: 5px; color: black !important; }
+            th { background-color: #eee !important; }
+            * { color: black !important; text-shadow: none !important; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 max-w-7xl mx-auto pb-24">
+
+    <button onclick="readPage()" class="fixed bottom-6 right-6 z-50 bg-white text-blue-900 p-4 rounded-full shadow-2xl font-bold flex items-center gap-2 hover:scale-110 transition-transform no-print cursor-pointer">
+        <i class="fas fa-headphones"></i> Listen
+    </button>
+
+    <nav class="flex justify-between items-center mb-12 no-print">
+        <div class="text-left">
+            <h1 class="font-display text-2xl md:text-3xl font-bold">Physics Prep Kit 2026</h1>
+            <p class="text-xs text-gray-400">Target: 60+ Marks</p>
+        </div>
+        <div class="bg-blue-900/50 px-4 py-2 rounded-lg border border-blue-500/30">
+            <span class="text-blue-400 font-bold">Exam Date:</span> Feb 13
+        </div>
+    </nav>
+
+    <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+            <span class="bg-blue-600 text-white font-bold px-4 py-2 rounded-lg">PART 1</span>
+            <h2 class="text-3xl font-display font-bold">Subjective Questions (Full Definitions)</h2>
+        </div>
+
+        <div class="space-y-8 mb-12">
+            <h3 class="text-xl font-bold text-blue-400 border-b border-blue-500/30 pb-2">1. Important Differences</h3>
+            
+            <div class="glass rounded-xl overflow-hidden">
+                <div class="p-4 bg-blue-500/10 font-bold border-b border-white/5">Q1. n-type vs p-type Semiconductors</div>
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead>
+                        <tr><th class="p-4">Feature</th><th class="p-4">n-type Semiconductor</th><th class="p-4">p-type Semiconductor</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr class="table-row-hover"><td class="p-4 font-bold">1. Dopant</td><td class="p-4">Doped with <strong>Pentavalent</strong> impurity (Group 15 elements like Arsenic, Phosphorus).</td><td class="p-4">Doped with <strong>Trivalent</strong> impurity (Group 13 elements like Indium, Gallium).</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-bold">2. Majority Carriers</td><td class="p-4"><strong>Electrons</strong> (negatively charged) are majority charge carriers.</td><td class="p-4"><strong>Holes</strong> (positively charged) are majority charge carriers.</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-bold">3. Minority Carriers</td><td class="p-4">Holes are minority carriers.</td><td class="p-4">Electrons are minority carriers.</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-bold">4. Energy Level</td><td class="p-4">Donor energy level lies just <strong>below</strong> the Conduction Band.</td><td class="p-4">Acceptor energy level lies just <strong>above</strong> the Valence Band.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="glass rounded-xl overflow-hidden">
+                <div class="p-4 bg-blue-500/10 font-bold border-b border-white/5">Q2. Ammeter vs Voltmeter</div>
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead>
+                        <tr><th class="p-4">Feature</th><th class="p-4">Ammeter</th><th class="p-4">Voltmeter</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr class="table-row-hover"><td class="p-4 font-bold">1. Function</td><td class="p-4">Measures electric <strong>current</strong> in the circuit.</td><td class="p-4">Measures <strong>potential difference</strong> (voltage) between two points.</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-bold">2. Connection</td><td class="p-4">Always connected in <strong>Series</strong>.</td><td class="p-4">Always connected in <strong>Parallel</strong>.</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-bold">3. Resistance</td><td class="p-4">Very low (Ideal = 0).</td><td class="p-4">Very high (Ideal = Infinite).</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="glass rounded-xl overflow-hidden">
+                <div class="p-4 bg-blue-500/10 font-bold border-b border-white/5">Q3. Step-up vs Step-down Transformer</div>
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead>
+                        <tr><th class="p-4">Feature</th><th class="p-4">Step-up Transformer</th><th class="p-4">Step-down Transformer</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr class="table-row-hover"><td class="p-4 font-bold">1. Voltage</td><td class="p-4">Increases AC voltage (Output > Input).</td><td class="p-4">Decreases AC voltage (Output < Input).</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-bold">2. Current</td><td class="p-4">Decreases the strength of current.</td><td class="p-4">Increases the strength of current.</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-bold">3. No. of Turns</td><td class="p-4">Secondary turns > Primary turns ($N_s > N_p$).</td><td class="p-4">Secondary turns < Primary turns ($N_s < N_p$).</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="glass rounded-xl overflow-hidden">
+                <div class="p-4 bg-blue-500/10 font-bold border-b border-white/5">Q4. Self Induction vs Mutual Induction</div>
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead>
+                        <tr><th class="p-4">Feature</th><th class="p-4">Self Induction</th><th class="p-4">Mutual Induction</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr class="table-row-hover"><td class="p-4 font-bold">1. Definition</td><td class="p-4">Inducing EMF in a coil due to change of current in the <strong>same coil</strong>.</td><td class="p-4">Inducing EMF in a coil due to change of current in a <strong>neighboring coil</strong>.</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-bold">2. Coils</td><td class="p-4">One coil involved. (Example: Choke Coil).</td><td class="p-4">Two coils (Primary & Secondary). (Example: Transformer).</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+             <div class="glass rounded-xl overflow-hidden">
+                <div class="p-4 bg-blue-500/10 font-bold border-b border-white/5">Q5. Interference vs Diffraction</div>
+                <table class="w-full text-left text-sm md:text-base">
+                    <thead>
+                        <tr><th class="p-4">Feature</th><th class="p-4">Interference</th><th class="p-4">Diffraction</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr class="table-row-hover"><td class="p-4 font-bold">1. Source</td><td class="p-4">Superposition of two separate wave trains (coherent sources).</td><td class="p-4">Bending of light from different parts of the <strong>same wavefront</strong>.</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-bold">2. Fringes</td><td class="p-4">Fringes are usually of <strong>equal width</strong>.</td><td class="p-4">Fringes are of <strong>unequal width</strong> (Central max is widest).</td></tr>
+                        <tr class="table-row-hover"><td class="p-4 font-bold">3. Contrast</td><td class="p-4">Dark fringes are perfectly dark (good contrast).</td><td class="p-4">Dark fringes are not perfectly dark (poor contrast).</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="space-y-6 mb-12">
+            <h3 class="text-xl font-bold text-blue-400 border-b border-blue-500/30 pb-2">2. Reasoning & Short Definitions (Enhanced)</h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass p-6 rounded-xl border-l-4 border-green-400">
+                    <h4 class="font-bold text-lg mb-2">Q6. State Lenz's Law</h4>
+                    <p class="text-gray-300 mb-3 text-justify">"The polarity of induced EMF is such that it tends to produce a current which <strong>opposes the change in magnetic flux</strong> that produced it."</p>
+                    <div class="bg-black/30 p-3 rounded mb-3">
+                        <p class="font-mono text-green-400">$\varepsilon = -\frac{d\Phi}{dt}$</p>
+                        <p class="text-xs text-gray-400 mt-1">(Negative sign indicates opposition)</p>
+                    </div>
+                    <p class="text-sm font-bold text-white">Significance: It is based on the Law of Conservation of Energy.</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-l-4 border-purple-400">
+                    <h4 class="font-bold text-lg mb-2">Q7. Total Internal Reflection (TIR)</h4>
+                    <p class="text-gray-300 mb-2 text-justify">The phenomenon where a ray of light traveling from a denser to a rarer medium is <strong>completely reflected back</strong> into the denser medium if the angle of incidence exceeds the critical angle.</p>
+                    <ul class="list-disc list-inside text-sm text-purple-300 mt-2">
+                        <li>Condition 1: Light must travel from Denser $\to$ Rarer medium.</li>
+                        <li>Condition 2: Angle of incidence > Critical angle ($i > i_c$).</li>
+                    </ul>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-l-4 border-yellow-400">
+                    <h4 class="font-bold text-lg mb-2">Q8. Properties of Electric Field Lines</h4>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2 text-justify">
+                        <li>Start from <strong>Positive</strong> charge and end at <strong>Negative</strong> charge.</li>
+                        <li><strong>Two lines never intersect.</strong> (Reason: If they did, there would be two directions of E-field at one point, which is impossible).</li>
+                        <li>They are always <strong>perpendicular</strong> to the surface of a conductor.</li>
+                        <li>Tangent to the line gives direction of Electric Field.</li>
+                    </ul>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-l-4 border-red-400">
+                    <h4 class="font-bold text-lg mb-2">Q9. Properties of EM Waves</h4>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2 text-justify">
+                        <li>Produced by <strong>accelerated charges</strong>.</li>
+                        <li>Travel with speed of light ($c = 3 \times 10^8$ m/s) in vacuum.</li>
+                        <li><strong>Transverse</strong> in nature (E and B fields oscillate perpendicular to propagation).</li>
+                        <li>Do not require a material medium.</li>
+                    </ul>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-l-4 border-blue-400">
+                    <h4 class="font-bold text-lg mb-2">Q10. Why is Sky Blue?</h4>
+                    <p class="text-gray-300 text-justify">Due to <strong>Scattering of Light</strong>. According to Rayleigh's Law, scattering $\propto 1/\lambda^4$.</p>
+                    <p class="text-gray-300 mt-2 text-justify">Air molecules scatter shorter wavelengths (Blue/Violet) much more than longer wavelengths (Red). Since our eyes are more sensitive to Blue than Violet, the sky appears blue.</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-l-4 border-gray-400">
+                    <h4 class="font-bold text-lg mb-2">Q11. Why Transformer Core is Laminated?</h4>
+                    <p class="text-gray-300 text-justify">To reduce energy loss due to <strong>Eddy Currents</strong>.</p>
+                    <p class="text-gray-300 mt-2 text-justify">Changing magnetic flux induces circulating currents (eddy currents) in the iron core, causing heat. <strong>Lamination</strong> (thin sheets insulated from each other) breaks the path of these currents, increasing resistance and minimizing heat loss.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <h3 class="text-xl font-bold text-blue-400 border-b border-blue-500/30 pb-2">3. Diagrams & Working (Full Descriptions)</h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2">Q12. P-N Junction as Full Wave Rectifier</h4>
+                    <div class="text-gray-300 text-sm space-y-2 text-justify">
+                        <p><strong>Principle:</strong> Diode conducts only in forward bias.</p>
+                        <p><strong>Construction:</strong> Uses a center-tap transformer and two diodes ($D_1, D_2$).</p>
+                        <p><strong>Working:</strong></p>
+                        <ul class="list-disc list-inside pl-2">
+                            <li><strong>Positive Half Cycle:</strong> $D_1$ is Forward Biased (ON), $D_2$ is Reverse Biased (OFF). Current flows via $D_1$.</li>
+                            <li><strong>Negative Half Cycle:</strong> $D_2$ is Forward Biased (ON), $D_1$ is Reverse Biased (OFF). Current flows via $D_2$.</li>
+                        </ul>
+                        <p class="text-green-400 font-bold mt-1">Result: Unidirectional, continuous current through load.</p>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2">Q13. Logic Gates</h4>
+                    <div class="space-y-4">
+                        <div class="border-b border-white/10 pb-2">
+                            <p class="font-bold text-yellow-400">1. OR Gate ($Y = A + B$)</p>
+                            <p class="text-sm text-gray-300">Output is High (1) if <strong>at least one</strong> input is High.</p>
+                        </div>
+                        <div class="border-b border-white/10 pb-2">
+                            <p class="font-bold text-yellow-400">2. AND Gate ($Y = A \cdot B$)</p>
+                            <p class="text-sm text-gray-300">Output is High (1) only if <strong>all</strong> inputs are High.</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-yellow-400">3. NOT Gate ($Y = \bar{A}$)</p>
+                            <p class="text-sm text-gray-300">Output is the <strong>inverse</strong> of the input.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2">Q14. Compound Microscope</h4>
+                    <div class="text-gray-300 text-sm space-y-2 text-justify">
+                        <p><strong>Construction:</strong> Consists of two convex lenses.</p>
+                        <ul class="list-disc list-inside pl-2">
+                            <li><strong>Objective Lens:</strong> Small focal length and small aperture (facing the object).</li>
+                            <li><strong>Eyepiece:</strong> Large focal length and large aperture (facing the eye).</li>
+                        </ul>
+                        <p><strong>Working:</strong> Objective forms a real, inverted, magnified image. Eyepiece acts as a simple magnifier to form the final virtual, inverted, and highly magnified image.</p>
+                    </div>
+                </div>
+
+                 <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2">Q15. Forward vs Reverse Bias</h4>
+                    <div class="text-gray-300 text-sm space-y-2 text-justify">
+                        <ul class="list-disc list-inside pl-2">
+                            <li><strong>Forward Bias:</strong> p-side connected to Positive, n-side to Negative. Depletion layer <strong>decreases</strong>. Current flows easily.</li>
+                            <li><strong>Reverse Bias:</strong> p-side connected to Negative, n-side to Positive. Depletion layer <strong>increases</strong>. No current flows (except negligible leakage).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+            <span class="bg-purple-600 text-white font-bold px-4 py-2 rounded-lg">PART 2</span>
+            <h2 class="text-3xl font-display font-bold">Important Formulas (Memorize These)</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q16. Gauss's Theorem</h4>
+                <p class="text-sm text-gray-300 mb-2">Total flux = Charge enclosed / Permittivity</p>
+                <p class="text-xl font-mono my-2 text-center border p-2 rounded bg-black/20">$\phi = \frac{q}{\epsilon_0}$</p>
+            </div>
+
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q18. Parallel Plate Capacitor</h4>
+                <p class="text-sm text-gray-300 mb-2">Capacity increases with Area and Dielectric (K).</p>
+                <p class="text-xl font-mono my-2 text-center border p-2 rounded bg-black/20">$C = \frac{K \epsilon_0 A}{d}$</p>
+            </div>
+
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q24. Prism Formula</h4>
+                <p class="text-sm text-gray-300 mb-2">Refractive Index relation</p>
+                <p class="text-lg font-mono my-2 text-center border p-2 rounded bg-black/20">$\mu = \frac{\sin(\frac{A+\delta_m}{2})}{\sin(\frac{A}{2})}$</p>
+            </div>
+            
+            <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q25. Einstein's Equation</h4>
+                <p class="text-sm text-gray-300 mb-2">Photoelectric Effect conservation of energy</p>
+                <p class="text-xl font-mono my-2 text-center border p-2 rounded bg-black/20">$K_{max} = h\nu - \phi_0$</p>
+            </div>
+            
+             <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q22. Resonance Frequency</h4>
+                <p class="text-sm text-gray-300 mb-2">Condition: $X_L = X_C$</p>
+                <p class="text-xl font-mono my-2 text-center border p-2 rounded bg-black/20">$f = \frac{1}{2\pi\sqrt{LC}}$</p>
+            </div>
+
+             <div class="glass p-6 rounded-xl border border-purple-500/30">
+                <h4 class="font-bold text-purple-400 mb-2">Q23. Lens Maker's Formula</h4>
+                <p class="text-sm text-gray-300 mb-2">For focal length of a lens</p>
+                <p class="text-lg font-mono my-2 text-center border p-2 rounded bg-black/20">$\frac{1}{f} = (\mu-1)(\frac{1}{R_1}-\frac{1}{R_2})$</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+            <span class="bg-green-600 text-white font-bold px-4 py-2 rounded-lg">PART 3</span>
+            <h2 class="text-3xl font-display font-bold">Top 85 Objective One-Liners</h2>
+        </div>
+        
+        <div class="glass rounded-2xl overflow-hidden border border-green-500/30">
+            <div class="p-6 bg-green-900/20 border-b border-green-500/30">
+                <p class="text-green-300"><i class="fas fa-info-circle mr-2"></i> Memorize these direct answers for the Objective Section.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-0 divide-y divide-white/10 md:divide-x">
+                
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">01</span>
+                    <p class="text-sm mt-1">Unit of Electric Field: <strong>N/C</strong> (Newton/Coulomb)</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">02</span>
+                    <p class="text-sm mt-1">Value of $\epsilon_0$: <strong>$8.85 \times 10^{-12}$</strong> $C^2N^{-1}m^{-2}$</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">03</span>
+                    <p class="text-sm mt-1">Electric field inside a conductor: <strong>Zero</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">04</span>
+                    <p class="text-sm mt-1">Electrons in 1 Coulomb: <strong>$6.25 \times 10^{18}$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">05</span>
+                    <p class="text-sm mt-1">Dielectric constant of metal: <strong>Infinite</strong></p>
+                </div>
+                
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">06</span>
+                    <p class="text-sm mt-1">Kirchhoff's 1st Law: Conservation of <strong>Charge</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">07</span>
+                    <p class="text-sm mt-1">Kirchhoff's 2nd Law: Conservation of <strong>Energy</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">08</span>
+                    <p class="text-sm mt-1">Resistance of Ideal Ammeter: <strong>Zero</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">09</span>
+                    <p class="text-sm mt-1">Resistance of Ideal Voltmeter: <strong>Infinite</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">10</span>
+                    <p class="text-sm mt-1">Wire stretched to double length, R becomes: <strong>4 times (4R)</strong></p>
+                </div>
+                 <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">11</span>
+                    <p class="text-sm mt-1">Unit of Resistivity: <strong>Ohm-meter</strong> ($\Omega \cdot m$)</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">12</span>
+                    <p class="text-sm mt-1">Ohm's Law is valid for: <strong>Metals</strong> (Conductors)</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">13</span>
+                    <p class="text-sm mt-1">Drift Velocity relation: <strong>$v_d \propto E$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">14</span>
+                    <p class="text-sm mt-1">Potential of Earth: <strong>Zero</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">15</span>
+                    <p class="text-sm mt-1">Dielectric inserted: Potential <strong>Decreases</strong></p>
+                </div>
+
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">16</span>
+                    <p class="text-sm mt-1">Moving charge produces: <strong>Electric & Magnetic Fields</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">17</span>
+                    <p class="text-sm mt-1">1 Tesla = <strong>$10^4$ Gauss</strong></p>
+                </div>
+                 <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">18</span>
+                    <p class="text-sm mt-1">Galvanometer to Ammeter: Connect <strong>Low Resistance (Shunt) in Parallel</strong></p>
+                </div>
+                 <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">19</span>
+                    <p class="text-sm mt-1">Galvanometer to Voltmeter: Connect <strong>High Resistance in Series</strong></p>
+                </div>
+                 <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">20</span>
+                    <p class="text-sm mt-1">Lorentz Force: <strong>$F = q(E + v \times B)$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">21</span>
+                    <p class="text-sm mt-1">Lenz's Law is based on: <strong>Conservation of Energy</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">22</span>
+                    <p class="text-sm mt-1">Transformer Principle: <strong>Mutual Induction</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">23</span>
+                    <p class="text-sm mt-1">Transformer Core is Laminated to: <strong>Reduce Eddy Currents</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">24</span>
+                    <p class="text-sm mt-1">Frequency in India: AC = <strong>50Hz</strong>, DC = <strong>0Hz</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">25</span>
+                    <p class="text-sm mt-1">Power Factor of Pure Resistor: <strong>1</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">26</span>
+                    <p class="text-sm mt-1">Energy stored in Inductor: <strong>$1/2 LI^2$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">27</span>
+                    <p class="text-sm mt-1">Unit of Magnetic Flux: <strong>Weber (Wb)</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">28</span>
+                    <p class="text-sm mt-1">Parallel wires, opposite direction current: <strong>Repel</strong> each other</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">29</span>
+                    <p class="text-sm mt-1">Phase diff in Inductor: Voltage leads by <strong>$90^\circ$ ($\pi/2$)</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">30</span>
+                    <p class="text-sm mt-1">Resonance Condition: <strong>$X_L = X_C$</strong></p>
+                </div>
+
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">31</span>
+                    <p class="text-sm mt-1">Highest Frequency Wave: <strong>Gamma Rays</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">32</span>
+                    <p class="text-sm mt-1">Ozone layer absorbs: <strong>UV Rays</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">33</span>
+                    <p class="text-sm mt-1">EM Waves Nature: <strong>Transverse</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">34</span>
+                    <p class="text-sm mt-1">Speed of Light: <strong>$c = 1/\sqrt{\mu_0\epsilon_0}$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">35</span>
+                    <p class="text-sm mt-1">Mirage is due to: <strong>Total Internal Reflection (TIR)</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">36</span>
+                    <p class="text-sm mt-1">Blue Sky is due to: <strong>Scattering</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">37</span>
+                    <p class="text-sm mt-1">Focal length of Plane Mirror: <strong>Infinity</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">38</span>
+                    <p class="text-sm mt-1">Unit of Power of Lens: <strong>Diopter (D)</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">39</span>
+                    <p class="text-sm mt-1">Max Refractive Index Color: <strong>Violet</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">40</span>
+                    <p class="text-sm mt-1">Wavefront from point source: <strong>Spherical</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">41</span>
+                    <p class="text-sm mt-1">Power of combination: <strong>$P = P_1 + P_2$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">42</span>
+                    <p class="text-sm mt-1">Critical Angle relation: <strong>$\mu = 1/\sin(i_c)$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">43</span>
+                    <p class="text-sm mt-1">Least Distance of Distinct Vision: <strong>25 cm</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">44</span>
+                    <p class="text-sm mt-1">To increase Telescope Power: Increase focal length of Objective ($f_o$)</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">45</span>
+                    <p class="text-sm mt-1">Constructive Interference Path Diff: <strong>$n\lambda$</strong></p>
+                </div>
+
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">46</span>
+                    <p class="text-sm mt-1">Photon Energy: <strong>$E = h\nu$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">47</span>
+                    <p class="text-sm mt-1">Rest Mass of Photon: <strong>Zero</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">48</span>
+                    <p class="text-sm mt-1">de-Broglie Wavelength: <strong>$\lambda = h/p = h/mv$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">49</span>
+                    <p class="text-sm mt-1">Electron Volt (eV) is unit of: <strong>Energy</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">50</span>
+                    <p class="text-sm mt-1">Visible Hydrogen Series: <strong>Balmer Series</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">51</span>
+                    <p class="text-sm mt-1">Size of Nucleus: <strong>$10^{-15}$ m (Fermi)</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">52</span>
+                    <p class="text-sm mt-1">Nuclear Force properties: <strong>Strongest, Short range</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">53</span>
+                    <p class="text-sm mt-1">Max Penetrating Power: <strong>Gamma Rays</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">54</span>
+                    <p class="text-sm mt-1">Energy equivalent of 1 AMU: <strong>931 MeV</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">55</span>
+                    <p class="text-sm mt-1">Majority carriers in n-type: <strong>Electrons</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">56</span>
+                    <p class="text-sm mt-1">Majority carriers in p-type: <strong>Holes</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">57</span>
+                    <p class="text-sm mt-1">Semiconductor at 0 Kelvin behaves as: <strong>Insulator</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">58</span>
+                    <p class="text-sm mt-1">Barrier Potential for Silicon: <strong>0.7 V</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">59</span>
+                    <p class="text-sm mt-1">Rectifier converts: <strong>AC to DC</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">60</span>
+                    <p class="text-sm mt-1">Universal Gates: <strong>NAND, NOR</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">61</span>
+                    <p class="text-sm mt-1">NOT Gate is also called: <strong>Inverter</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">62</span>
+                    <p class="text-sm mt-1">Temp increases, Semiconductor Resistivity: <strong>Decreases</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">63</span>
+                    <p class="text-sm mt-1">Depletion layer width in Forward Bias: <strong>Decreases</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">64</span>
+                    <p class="text-sm mt-1">Impurity for p-type: <strong>Trivalent</strong> (Indium/Gallium)</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">65</span>
+                    <p class="text-sm mt-1">Impurity for n-type: <strong>Pentavalent</strong> (Arsenic/Phosphorus)</p>
+                </div>
+                
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">66</span>
+                    <p class="text-sm mt-1">Momentum of Photon: <strong>$p = h/\lambda$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">67</span>
+                    <p class="text-sm mt-1">Ionization Energy of Hydrogen: <strong>+13.6 eV</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">68</span>
+                    <p class="text-sm mt-1">Work done on Equipotential Surface: <strong>Zero</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">69</span>
+                    <p class="text-sm mt-1">Unit of Capacitor Energy: <strong>Joule</strong> ($1/2 CV^2$)</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">70</span>
+                    <p class="text-sm mt-1">Field-Potential Relation: <strong>$E = -dV/dr$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">71</span>
+                    <p class="text-sm mt-1">RMS Current: <strong>$I_{rms} = I_0/\sqrt{2}$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">72</span>
+                    <p class="text-sm mt-1">Phase diff between E and B in EM wave: <strong>Zero</strong> (In phase)</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">73</span>
+                    <p class="text-sm mt-1">Convex lens in water: Focal length <strong>Increases</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">74</span>
+                    <p class="text-sm mt-1">Charge on Neutron: <strong>Zero</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">75</span>
+                    <p class="text-sm mt-1">Diamagnetic Susceptibility: <strong>Negative</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">76</span>
+                    <p class="text-sm mt-1">Sky color for Astronaut: <strong>Black</strong> (No atmosphere/scattering)</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">77</span>
+                    <p class="text-sm mt-1">Transformer on DC: <strong>Fails/Burns</strong> (No induction)</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">78</span>
+                    <p class="text-sm mt-1">Specific Resistance depends on: <strong>Material only</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">79</span>
+                    <p class="text-sm mt-1">Resolving Power increases if: Wavelength <strong>decreases</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">80</span>
+                    <p class="text-sm mt-1">Dipole Moment Formula: <strong>$p = q \times 2a$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">81</span>
+                    <p class="text-sm mt-1">Torque on Dipole: <strong>$\tau = pE \sin\theta$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">82</span>
+                    <p class="text-sm mt-1">Mag Field at Center of Coil is: <strong>Perpendicular</strong> to plane</p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">83</span>
+                    <p class="text-sm mt-1">Unit of Inductance: <strong>Henry (H)</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">84</span>
+                    <p class="text-sm mt-1">Brewster's Law: <strong>$\mu = \tan(i_p)$</strong></p>
+                </div>
+                <div class="p-4 hover:bg-white/5 transition-colors">
+                    <span class="text-green-400 font-bold text-xs">85</span>
+                    <p class="text-sm mt-1">Mass-Energy Relation: <strong>$E = mc^2$</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let speaking = false;
+        function readPage() {
+            if (speaking) {
+                window.speechSynthesis.cancel();
+                speaking = false;
+                return;
+            }
+            
+            // Get text from key learning sections
+            const text = document.body.innerText;
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            utterance.rate = 1;
+            utterance.pitch = 1;
+            
+            window.speechSynthesis.speak(utterance);
+            speaking = true;
+            
+            utterance.onend = () => { speaking = false; };
+        }
+    </script>
+</body>
+</html>
