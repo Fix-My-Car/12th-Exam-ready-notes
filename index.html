@@ -1,117 +1,87 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP Board Class 12 - Ultimate Study Hub</title>
+    <title>Physics Prep Hub 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="manifest" href="manifest.json">
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
-        }
-        
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
-                    colors: { primary: '#6366f1', secondary: '#ec4899', dark: '#0f172a' },
-                    animation: { 'float': 'float 6s ease-in-out infinite' },
-                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } } }
+                    colors: { primary: '#3b82f6', secondary: '#8b5cf6', surface: '#1e293b', dark: '#0f172a' }
                 }
             }
         }
     </script>
     <style>
         body { background-color: #0f172a; color: #e2e8f0; }
-        .glass { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
-        .glass:hover { transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.3); }
-        .gradient-text { background: linear-gradient(135deg, #6366f1, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .bg-mesh { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 25%); }
+        .glass { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-hover:hover { background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.4); transform: translateY(-4px); }
+        .hero-gradient { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
 
-    <div class="bg-mesh"></div>
-
-    <div class="sticky top-0 z-50 bg-red-600 text-white text-center py-1 font-bold text-sm shadow-md">
-        ⚠️ PHYSICS EXAM IN 2 DAYS! (FEB 13)
-    </div>
-
-    <nav class="relative z-40 glass border-b-0">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">12</div>
-                <span class="font-display font-bold text-xl">MP Board Hub</span>
-            </div>
-            <div class="text-sm text-gray-400 hidden md:block">Welcome, <span class="text-white">Aabhas</span></div>
-        </div>
-    </nav>
-
-    <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full">
+    <main class="max-w-5xl w-full">
         
-        <div class="text-center mb-12">
-            <h1 class="font-display text-5xl md:text-7xl font-bold mb-6">Your <span class="gradient-text">Command Center</span></h1>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Access your Physics and Chemistry kits. English is done! Focus on PCM now.</p>
+        <div class="text-center mb-16 space-y-4">
+            <div class="inline-block px-4 py-1 rounded-full bg-blue-900/30 border border-blue-500/30 text-blue-400 text-sm font-bold mb-4">
+                <i class="fas fa-calendar-alt mr-2"></i> Exam Date: Feb 13, 2026
+            </div>
+            <h1 class="text-5xl md:text-7xl font-display font-bold tracking-tight hero-gradient pb-2">
+                Physics Prep Kit
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                MP Board Class 12 Strategy. Focus on the 60+ Marks Plan.
+            </p>
         </div>
 
-        <a href="tools.html" class="block mb-8 group transform hover:scale-[1.01] transition-transform">
-            <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-6 rounded-2xl border border-purple-500/50 shadow-lg relative overflow-hidden">
-                 <div class="absolute right-0 top-0 opacity-10 text-9xl text-white rotate-12 -mr-10 -mt-10"><i class="fas fa-tools"></i></div>
-                 <div class="relative z-10 flex items-center justify-between">
-                     <div>
-                         <h2 class="text-2xl font-bold text-white mb-1">⚡ Power Tools & Flashcards</h2>
-                         <p class="text-purple-200 text-sm">Match the Column • Diagram Practice • Formula Solver</p>
-                     </div>
-                     <div class="bg-white text-purple-900 px-4 py-2 rounded-lg font-bold">Open Tools →</div>
-                 </div>
-            </div>
-        </a>
-
-        <a href="test.html" class="block mb-12 group">
-            <div class="glass p-8 rounded-3xl border border-blue-500/30 relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div class="relative flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div class="text-left">
-                        <div class="inline-block px-3 py-1 bg-blue-500 text-white text-xs font-bold rounded-full mb-2">MOCK TEST</div>
-                        <h2 class="text-3xl font-bold text-white mb-2">PCM Exam Simulator</h2>
-                        <p class="text-gray-300">Test yourself with 30 random questions from the Physics & Chemistry question bank.</p>
-                    </div>
-                    <div class="px-8 py-3 bg-white text-blue-900 font-bold rounded-xl shadow-lg transform group-hover:scale-105 transition-transform">
-                        Start Mock Test →
-                    </div>
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            
+            <a href="physics.html" class="glass rounded-2xl p-8 transition-all duration-300 glass-hover group">
+                <div class="h-12 w-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                    <i class="fas fa-book-open text-2xl"></i>
                 </div>
-            </div>
-        </a>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-            <a href="physics.html" class="glass h-full p-8 rounded-2xl border-l-4 border-blue-500 hover:bg-white/5 transition-colors">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="text-blue-400 text-3xl"><i class="fas fa-atom"></i></div>
-                    <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full">READY</span>
+                <h2 class="text-2xl font-bold mb-2 text-white">Subjective Guide</h2>
+                <p class="text-gray-400 text-sm mb-6">Master Part 1 & Part 3. Includes "Zero-Math" definitions, differences, and the top 85 One-Liners.</p>
+                <div class="flex items-center text-blue-400 text-sm font-bold">
+                    Start Learning <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                 </div>
-                <h3 class="text-2xl font-bold mb-2">Physics Kit</h3>
-                <p class="text-gray-400 text-sm">Zero-math questions, Derivations, and 85 MCQs.</p>
             </a>
 
-            <a href="chemistry.html" class="glass h-full p-8 rounded-2xl border-l-4 border-green-500 hover:bg-white/5 transition-colors">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="text-green-400 text-3xl"><i class="fas fa-flask"></i></div>
-                    <span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs font-bold rounded-full">READY</span>
+            <a href="derivations.html" class="glass rounded-2xl p-8 transition-all duration-300 glass-hover group border-l-4 border-l-purple-500/0 hover:border-l-purple-500">
+                <div class="h-12 w-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6 text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                    <i class="fas fa-square-root-variable text-2xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold mb-2">Chemistry Kit</h3>
-                <p class="text-gray-400 text-sm">Name reactions, Reasoning, and 77 MCQs.</p>
+                <h2 class="text-2xl font-bold mb-2 text-white">Derivations Book</h2>
+                <p class="text-gray-400 text-sm mb-6">Part 2 Deep Dive. Step-by-step mathematical proofs for Gauss, Optics, and AC Circuits.</p>
+                <div class="flex items-center text-purple-400 text-sm font-bold">
+                    View Proofs <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
             </a>
+
+            <a href="test.html" class="glass rounded-2xl p-8 transition-all duration-300 glass-hover group border-l-4 border-l-green-500/0 hover:border-l-green-500">
+                <div class="h-12 w-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6 text-green-400 group-hover:bg-green-500 group-hover:text-white transition-colors">
+                    <i class="fas fa-laptop-code text-2xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2 text-white">Exam Simulator</h2>
+                <p class="text-gray-400 text-sm mb-6">Test yourself. A timed MCQ practice environment to verify your memory of the 85 questions.</p>
+                <div class="flex items-center text-green-400 text-sm font-bold">
+                    Launch Test <i class="fas fa-play ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
         </div>
+
+        <footer class="text-center text-gray-500 text-sm">
+            <p>&copy; 2026 Aabhas's Prep Kit. Good luck for the Exam!</p>
+        </footer>
 
     </main>
-
-    <footer class="border-t border-white/10 py-8 text-center glass mt-auto">
-        <p class="text-gray-500 text-sm">Designed by <span class="text-white">Aabhas</span> • 2026</p>
-    </footer>
-
 </body>
 </html>
